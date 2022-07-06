@@ -1,2 +1,1 @@
-# Andrew Taylor
-## Math n Stuff
+# Repo for Github Pages
