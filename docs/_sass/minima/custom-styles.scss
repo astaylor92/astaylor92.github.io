@@ -3,8 +3,14 @@
 .headshot{
     display: inline-block !important;
     width: 25%;
+    margin-right: 1em;
+    vertical-align: top;
 }
 .intro_text{
     display: inline-block !important;
     width: 70%;
+    vertical-align: top;
+}
+.hello{
+    margin-top: 0px;
 }
