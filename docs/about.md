@@ -4,7 +4,7 @@ title: About Me
 permalink: /about/
 ---
 
-![headshot](images/headshot.jpeg){: style="float: left"}
+![headshot](images/headshot.jpeg){: style="float: left"; height="25%" width="25%"}
 
 ### Hey! I'm Andrew.
 
