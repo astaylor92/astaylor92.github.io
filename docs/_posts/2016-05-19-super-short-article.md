@@ -2,6 +2,8 @@
 layout: post
 title: "Some articles are just so short that we have to make the footer stick"
 excerpt: Testing testing shorter excerpt
+type: math
+skills: scikit-learn pipelines, multiple model family selection, classification
 categories: misc
 ---
 
