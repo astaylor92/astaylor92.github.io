@@ -4,5 +4,5 @@
 
 layout: home
 ---
-## Posts
+
 Show each post, tag it math / work / stuff, tag with other keywords, and add 1-sentence description (maybe image?)
