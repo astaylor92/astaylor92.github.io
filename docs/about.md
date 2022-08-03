@@ -4,6 +4,8 @@ title: About Me
 permalink: /about/
 ---
 
+![headshot](images/headshot.jpeg){: style="float: left"}
+
 ### Hey! I'm Andrew.
 
 Ever since starting my career as a retail strategy consultant known as the 'data guy' in our practice, I've enjoyed the intersection of analytics ("math") and business ("work"). I also like some other stuff ("stuff").
