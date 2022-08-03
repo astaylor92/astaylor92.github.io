@@ -1,18 +1,16 @@
 ---
 layout: page
-title: About
+title: About Me
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+# About Me
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+Hey! I'm Andrew. Ever since starting my career as a retail strategy consultant-turned manager known as the 'data guy' in our practice, I've enjoyed the intersection of analytics ("math") and business ("work"). I also like some other stuff ("stuff").
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+Translating business needs to requirements, prescribing analytics and data science solutions to fit those needs, then building effective, sophisticated models and tools that answer those questions is my passion. In the past, this has included various, typically supply chain-related, projects for retailers. In the future, I hope to bring the same passion to a team of data scientists. I'm currently pursuing my Master's in Analytics at Georgia Tech, looking for full-time work in January 2023.
 
+# Resume
 
-[jekyll-organization]: https://github.com/jekyll
+If you're interested a quick overview of my history and skills, please take a look at my resume below. For more detail on some of my work experiences and modeling projects, check out the blog posts found on my home page.
+
