@@ -1,9 +1,9 @@
-title: Math  n'  Work  n'  Stuff
+title: Andrew's Math Factory
 author:
   name: Andrew Taylor
   email: astaylor.92@gmail.com
 description: > # this means to ignore newlines until "show_excerpts:"
-  A place for math and work and stuff. 
+  A place for making things with math.
 
 show_excerpts: true # set to true to show excerpts on the homepage
 
