@@ -7,6 +7,8 @@ skills: scikit-learn pipelines, multiclass algorithms and scoring, multiple mode
 
 # TODO FILL IN ALL "XX"s
 
+---
+
 # What I Did
 
 ## Context
@@ -25,13 +27,76 @@ Selfishly, I also hadn't used `scikit-learn`'s `Pipeline` object too much yet, a
 
 I took a fairly standard approach to this problem, going through the following steps:
 
-1. **Data Collection, Cleaning & Transformation**
-3. **Exploratory Data Analysis**
-4. **Model Selection**
-5. **Final Model Tuning & Output Analysis**
+1. **Data Collection, Cleaning & Transformation**: Get the data. Make sure the data was there (enough). Check the data had the structure and types I wanted, and transform it if not. Perform veracity and distribution checks on predictors and response.
+3. **Exploratory Data Analysis**: Check the correlation of predictors, understand their relationship to the classes, and get an idea of each beer style's characteristics.
+4. **Model Selection**: Define initial model families (e.g. "logistic regression"), outline model selection scheme, develop evaluation pipelines, and select model family.
+5. **Final Model Tuning & Output Analysis**Fit the final model on the full dataset, analyze overall performance, and deep-dive misses.
 
+Notebooks and a process walkthrough is provided at the bottom of the post.
 
-### Data Collection, Cleaning & Transformation
+## Outcome
+
+After exploring six different families of models, each tested for their best hyperparameters, I selected a Histogram-Based Gradient Boosting Classifier with a balanced accuracy score of .866! **Note**: Balanced accuracy here refers to sklearn's `balanced_accuracy_score`, an average of the class accuracy across all classes.
+
+XX - Model scores & outputs
+
+The tree-based models (Random Forest and Gradient Boosting Classifier) far outperformed non-tree-based counterparts (Logistic Regression and RBF-Kernel Support Vector Classifier). Considering the nature of the data and number of classes, this was not too surprising!
+
+Given that the classes weren't balanced, I was concerned that we may have achieved strong accuracy by predicting the larger classes. Reviewing the results, I was pleased to see that the classifier did well on small and large classes alike.
+
+XX - Class sizes & predictions
+
+In fact, the classes that struggled the most made a lot of sense. For example, the Lager class was very often mistaken for a Pilsner, something that I do all the time!
+
+XX - Lager infographic
+
+Similarly, Porters and Stouts were tough to distinguish.
+
+XX - Porter/Stout infographic
+
+---
+
+# What I Took Away
+
+## Technology & Techniques
+As I mentioned, this was an opportunity for me to explore a few new things on the technical side:
+
+* All of the `pandas`
+* Extensive use of `sklearn`
+    * `Pipeline` to formulate
+    * Nested CV using `GridsearchCV` and `cross_validate_score`
+    * `StratifiedKFold` and stratification in `test_train_split`
+    * Custom scoring using individual scores from the `scoring` library
+* Radar plots from scratch in `matplotlib`
+* `seaborn` for all other vis
+* `textwrap` library for custom plot text wrapping (it's the little things)
+
+## Lessons Learned
+
+There were a few specific lessons learned, some the hard way:
+
+* **Deep-diving convergence errors can take a while** - Both the SVC and logistic regression struggled to converge at many points during parameter search. This was alleviated some by increasing the number of iterations, but ultimately, it turned out that if the regularization penalty was too small, the models often had trouble keeping coefficients stable. In addition, having too few principal components also seemed to cause instability.
+* **Radar charts ain't always right** - Although I liked radar charts here, they only allowed for general comparison of different attributes of a beer. In this case, since we never really needed to know to the decimal point if one attribute was higher than another for a beer, that was fine. I also liked how they showed the 'shape' of a beer here. However, I had to move to faceted bar charts if I really wanted to compare things
+
+---
+
+# What I Enjoyed
+
+* **Getting to know scorig metrics is useful if mind-bending** - XX - add detail
+* **Radar charts & info graphic design can be nice sometimes** - XX - add detail
+* **Pickle & parquet files are my friend** - XX - add detail
+* **Good results are fun** - XX - add detail
+
+---
+
+# Notebooks
+
+---
+
+# Process Detail
+
+## Data Collection, Cleaning & Transformation
+
 
 **Goals**: Get the data. Make sure the data was there (enough). Check the data had the structure and types I wanted, and transform it if not. Perform veracity and distribution checks on predictors and response.
 
@@ -59,7 +124,7 @@ This left us with 41 categories, the smallest of which had 20 observations, and 
 XX - category distribution countplot
 
 
-### Exploratory Data Analysis
+## Exploratory Data Analysis
 
 **Goals**: Check the correlation of predictors, understand their relationship to the classes, and get an idea of each beer style's characteristics.
 
@@ -89,7 +154,7 @@ However, if we wanted to compare across beers (e.g. which beers were sweetest), 
 XX - bar chart
 
 
-### Model Selection
+## Model Selection
 
 **Goals**: Define initial model families (e.g. "logistic regression"), outline model selection scheme, develop evaluation pipelines, and select model family.
 
@@ -115,20 +180,6 @@ In addition, I learned some interesting things about each model's selections:
 
 XX - Model observations
 
-### Final Model Tuning & Output Analysis
+## Final Model Tuning & Output Analysis
 
 **Goals**: Fit the final model on the full dataset, analyze overall performance, deep-dive misses
-
-
-
-# What I Took Away
-
-## Technology & Techniques
-
-## Lessons Learned
-
-## Thing to Explore Further
-
-# What I Enjoyed
-
-# Notebooks
