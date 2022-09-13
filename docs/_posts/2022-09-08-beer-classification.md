@@ -125,7 +125,9 @@ After investigating these and realizing they were more or less gag beers (see th
 
 This left us with 41 categories, the smallest of which had 20 observations, and a clean dataset for further analysis
 
-XX - category distribution countplot
+|![Style Counts](/images/beercharacteristics/count_styles_lowremoved.png)|
+|:--:|
+|*Beer Style Counts*|
 
 
 ## Exploratory Data Analysis
@@ -135,27 +137,37 @@ XX - category distribution countplot
 
 **Correlation**: The correlation analysis showed a fairly signficant amount of multicollinearity in general. There were the obvious pairs - min IBU and max IBU, alcohol and ABV. There were also other relationships that weren't too surprising once revelated - sour beers tended also to be fruity, and malty beers tended to have a lot of body, for example.
 
-XX - correlation plot
+|![Correlation Heatmap](/images/beercharacteristics/corrplot.png)|
+|:--:|
+|*Correlation Heatmap*|
 
 Although the tree-based algorithms shouln't have too much of an issue with this, I eventually needed to take this into with other models such as logistic regression and SVC.
 
 
 **Predictor-Class Relationships**: I took a look at each predictor, and plotted boxplots of the predictor values vs each class. The hope was to see differentiation amongst the classes in at least some of the predictors to provide signal. And we did! The most apparent might've been the IBU plots, show below.
 
-XX - IBU boxplots
+|![Max IBU Boxplots](/images/beercharacteristics/boxplot_dv_max_ibu.png)|
+|:--:|
+|*Boxplots of Style vs Max IBU*|
 
 
 **Beer Style Characteristics**: Essentially, here I wanted to take a look at the general profile of each beer. Now, I know radar plots (can be contentious)[http://www.thefunctionalart.com/2012/11/radar-graphs-avoid-them-999-of-time.html] due to the difficulty in comparing observations, BUT this seemed like a time where they make sense. The idea would be that radar charts give us a feel for each beer's characteristics without really needing a direct comparison across attributes. Then, we could use a few bar charts to compare beers along the different attributes.
 
 For example, if we looked at the radar chart of an IPA, below, we can see that it's generally very XX, XX, and XX. It's also more XX than XX. We can't really tell if the value for XX is more than XX, but in this case, we don't care about those values to that level of detail.
 
-XX - radar charts, sort by cluster correlation plot
+|![Radar Chart Stout](/images/beercharacteristics/spider_Stout.png)|
+|:--:|
+|*Radar Chart, Stout*|
 
-XX - all radar charts
+|![Radar Charts, All](/images/beercharacteristics/spiders_all.png)|
+|:--:|
+|*Radar Charts, All Styles*|
 
 However, if we wanted to compare across beers (e.g. which beers were sweetest), we would take a look at something like the bar chart below.
 
-XX - bar chart
+|![Sweetness by Style](/images/beercharacteristics/sweetness_by_style.png)|
+|:--:|
+|*Sweetness by Style*|
 
 
 ## Model Selection
