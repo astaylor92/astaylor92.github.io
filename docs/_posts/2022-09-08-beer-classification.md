@@ -111,11 +111,15 @@ XX - data fields & descriptions
 
 **Cleaning**: Veracity checks revealed no nulls (thanks, Kaggle contributor!). From a distribution standpoint, most were consistently between 0 and 100.
 
-![Histograms](/images/beercharacteristics/histograms_predictors.png)
+|![Histograms](/images/beercharacteristics/histograms_predictors.png)|
+|:--:|
+|*Feature Distributions*|
 
 However, the ABV column had apparent outliers.
 
-XX - outlier vis from ABV
+|![ABV Boxplot](/images/beercharacteristics/boxplot_abv.png)|
+|:--:|
+|*ABV Boxplot*|
 
 After investigating these and realizing they were more or less gag beers (see this link XX), I removed them from the dataset to avoid misrepresentation of beer types. Theoretically, it may also have been appropriate to create their own category, but with only 3 observations, it would be tough to train and test.
 
