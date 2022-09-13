@@ -15,7 +15,7 @@ skills: scikit-learn pipelines, multiclass algorithms and scoring, multiple mode
 
 This one was just for fun! I was poking around at beer data and came across a pretty clean dataset on Kaggle with characteristics of beer tastes, along with the beer source information (name, type, brewery). It got me wondering, how easy is it to mathematically tell different beer types apart?
 
-For those that drink beer, some types are very clearly different (an IPA vs a light lager, for example), and others are not (like a porter and a stout). However, with this dataset providing XX different features, maybe we can classify beers pretty well!
+For those that drink beer, some types are very clearly different (an IPA vs a light lager, for example), and others are not (like a porter and a stout). However, with this dataset providing 14 different features, maybe we can classify beers pretty well!
 
 ## Objective
 
@@ -111,7 +111,7 @@ XX - data fields & descriptions
 
 **Cleaning**: Veracity checks revealed no nulls (thanks, Kaggle contributor!). From a distribution standpoint, most were consistently between 0 and 100.
 
-XX - Distribution plots
+![Histograms](../images/beercharacteristics/histograms_predictors.png)
 
 However, the ABV column had apparent outliers.
 
@@ -183,3 +183,5 @@ XX - Model observations
 ## Final Model Tuning & Output Analysis
 
 **Goals**: Fit the final model on the full dataset, analyze overall performance, deep-dive misses
+
+XX - add detail
