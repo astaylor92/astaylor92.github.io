@@ -111,7 +111,7 @@ XX - data fields & descriptions
 
 **Cleaning**: Veracity checks revealed no nulls (thanks, Kaggle contributor!). From a distribution standpoint, most were consistently between 0 and 100.
 
-![Histograms](../images/beercharacteristics/histograms_predictors.png)
+![Histograms](/docs/images/beercharacteristics/histograms_predictors.png)
 
 However, the ABV column had apparent outliers.
 
