@@ -153,7 +153,7 @@ Although the tree-based algorithms shouln't have too much of an issue with this,
 
 **Beer Style Characteristics**: Essentially, here I wanted to take a look at the general profile of each beer. Now, I know radar plots (can be contentious)[http://www.thefunctionalart.com/2012/11/radar-graphs-avoid-them-999-of-time.html] due to the difficulty in comparing observations, BUT this seemed like a time where they make sense. The idea would be that radar charts give us a feel for each beer's characteristics without really needing a direct comparison across attributes. Then, we could use a few bar charts to compare beers along the different attributes.
 
-For example, if we looked at the radar chart of an IPA, below, we can see that it's generally very XX, XX, and XX. It's also more XX than XX. We can't really tell if the value for XX is more than XX, but in this case, we don't care about those values to that level of detail.
+For example, if we looked at the radar chart of an IPA, below, we can see that it's generally very malty and bitter, with a lot of body. It's also more sweet than hoppy. We can't really tell if the value for malty is more than bitter, but in this case, we don't care about those values to that level of detail.
 
 |![Radar Chart Stout](/images/beercharacteristics/spider_Stout.png)|
 |:--:|
@@ -184,13 +184,36 @@ It's worth noting that I used stratification in both the data split and the CVs,
 
 Finally, I had to pick a metric to use to determine the 'best', both for the gridsearches and the overall choice. After doing some splashing around in learning the various multiclass metrics, I landed on balanced accuracy (`balanced_accuracy_score` in sklearn), as this was most fair to our many classes. It essentially takes the average recall across each class.
 
-**Evaluation Pipelines**: This was the fun part for me! `sklearn`'s `Pipeline` objects are super useful. For me, this mattered primarily for the logistic regression and SVC estimators, both of which required scaling (required for the models to perform appropriately) and principal components analysis (to reduce multicollinearity). A sample of the code for this is below.
+**Evaluation Pipelines**: This was the fun part for me! `sklearn`'s `Pipeline` objects are super useful. For me, this mattered primarily for the logistic regression and SVC estimators, both of which required scaling (required for the models to perform appropriately) and principal components analysis (to reduce multicollinearity). A sample of the code for this is below, shown for SVC.
 
-XX - code clock
+```
+# Create the scaler
+scaler = StandardScaler()
+
+# Create the PCA object
+pca = PCA()
+
+# Create the estimator object
+svc_estimator = SVC(max_iter=1000)
+
+# Create the Pipeline object
+svc_pipe = Pipeline(steps=[('scaler', scaler), ('pca', pca), ('estimator', svc_estimator)])
+
+# Create the parameter grid for searching
+svc_param_grid = [
+    {
+        "pca__n_components": [4, 6],
+        "estimator__kernel": ['rbf', 'linear'],
+        "estimator__C": [0.01, 1, 100, 10000],
+    }
+]
+```
 
 **Model Selection Outcomes**: Maybe unsurprisingly, the tree-based estimators performed much better than logistic regression and SVC. The HGBT model performed the best, and is what was selected for final review.
 
-XX - Model results
+|![Model Results](/images/beercharacteristics/model_scores.png)|
+|:--:|
+|*Model Results*|
 
 In addition, I learned some interesting things about each model's selections:
 
