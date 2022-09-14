@@ -46,15 +46,17 @@ The tree-based models (Random Forest and Gradient Boosting Classifier) far outpe
 
 Given that the classes weren't balanced, I was concerned that we may have achieved strong accuracy by predicting the larger classes. Reviewing the results, I was pleased to see that the classifier did well on small and large classes alike.
 
-XX - Class sizes & predictions
+|![Predictions vs Actuals](/images/beercharacteristics/prediction_counts.png)|
+|:--:|
+|*Class Predictions vs Actuals*|
 
 In fact, the classes that struggled the most made a lot of sense. For example, the Lager class was very often mistaken for a Pilsner, something that I do all the time!
 
-XX - Lager infographic
+![Misses - Lager](/images/beercharacteristics/miss_summary_lager.png)
 
 Similarly, Porters and Stouts were tough to distinguish.
 
-XX - Porter/Stout infographic
+![Misses - Stout](/images/beercharacteristics/miss_summary_stout.png)
 
 ---
 
@@ -106,7 +108,7 @@ There were a few specific lessons learned, some the hard way:
 **Collection**: Collection was fairly straightforward. The data came from Kaggle [here](https://www.kaggle.com/datasets/ruthgn/beer-profile-and-ratings-data-set), and I could see even from the Kaggle summary that it was pretty clean. I downloaded the file and pretty quickly moved. The dataset contained 3,197 unique beers across 934 breweries.
 
 | Field | Description |
-| :--: | :--: |
+| :--: | :-- |
 | beer_name | Primary key - identifies the specific beer |
 | style_l1 | Custom 'level 1' style description - the dependent variable in our analysis |
 | min_ibu | Minimum IBU  of the beer |
@@ -124,7 +126,7 @@ There were a few specific lessons learned, some the hard way:
 | malty | Maltiness of the aroma and flavor |
 
 
-**Transformation**: From a transformation standpoint, again, the data was in pretty good shape. The main work here was transforming the 'style' column, which contained 111 categories, some of which had as few as 3-4 instances. However, there was a common structure of "[Beer Style] - [Specific Beer Type]" throughout the set, so splitting the name brought us to 41 beer 'styles'. I also did some minor text formatting here to remove capital letters and spaces for easy indexing and reference in pandas structures.
+**Transformation**: As I mentioned, the data was in pretty good shape. The main work here was transforming the 'style' column, which contained 111 categories, some of which had as few as 3-4 instances. However, there was a common structure of "[Beer Style] - [Specific Beer Type]" throughout the set, so splitting the name brought us to 41 beer 'styles'. I also did some minor text formatting here to remove capital letters and spaces for easy indexing and reference in pandas structures.
 
 
 **Cleaning**: Veracity checks revealed no nulls (thanks, Kaggle contributor!). From a distribution standpoint, most were consistently between 0 and 100.
@@ -258,18 +260,34 @@ This one was not incredibly consistent - ultimately, a depth of 16 was picked, a
 
 **Final Model Fit**: First, I refit HGBT hyperparameters to the full test/validation dataset using `GridSearchCV`. The final parameters were:
 
-XX - final parameters
+```
+{'estimator__learning_rate': 0.04,
+ 'estimator__max_depth': 8,
+ 'estimator__max_iter': 500}
+```
 
 **Performance Analysis**: Then, I looked at the final performance metrics. I was pleasantly surprised - I saw both high and consistent numbers across precision, recall, and f1 scores averaged in the three ways mentioned above.
 
-XX - final performance metrics
+| Accuracy |               0.861286 |
+| Balanced Accuracy |      0.861348 |
+| Precision (Micro) |      0.861286 |
+| Precision (Macro) |      0.869391 |
+| Precision (Weighted) |   0.864044 |
+| Recall (Micro) |         0.861286 |
+| Recall (Macro) |         0.861348 |
+| Recall (Weighted) |      0.861286 |
+| F1 (Micro) |             0.861286 |
+| F1 (Macro) |             0.860936 |
+| F1 (Weighted) |          0.859950 |
 
 **Feature Importance**: Using permutation importance, I examined which features were most critical to the HGBT model. Permutation importance essentially runs multiple permutations / random shuffling of each predictor and measures the impact on a performance metric (balanced accuracy, in this case). 
 
-XX - feature importance
+|![Feature Importance](/images/beercharacteristics/feature_importance.png)|
+|:--:|
+|*Feature Importance*|
 
 Interestingly, both the IBU metrics acccounted for most of the model! It turns out the beer styles are nearly seperably defined by their bitterness. Next, the alcohol level, hoppiness, and body were the next differentiators. This is interesting - I maybe would've expected to see a more balanced output, incorporating body and maltiness, but maybe this isn't surprising. IBU is also our most detailed metric, on a different scale than the others, and it's an official number. It may just provide more granularity than others.
 
 **Miss Deep-Dive**: Lastly, I deep-dove some of the top missed categories, examining the profiles of the top 3 beers they were mistaken for. Results here were not surprising, especially in our larger categories, as summarizing in the 'What I Did' section.
 
-XX - infographic
+![Misses - Lager 2](/images/beercharacteristics/miss_summary_lager.png)
