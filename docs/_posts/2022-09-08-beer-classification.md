@@ -40,13 +40,13 @@ A more detailed process walkthrough can be found in the last section of this pos
 After surveying six different families of models, each tested for their best hyperparameters, I ended up with a Histogram-Based Gradient Boosting Classifier with relatively sttrong a balanced accuracy score of .866.
 **Note**: Balanced accuracy here refers to sklearn's `balanced_accuracy_score`, an average of the class accuracy across all classes.
 
-|![Model Results](/images/beercharacteristics/model_balanced_accuracy.png)|
+|<img src="/images/beercharacteristics/model_balanced_accuracy.png"  width="50%" height="50%">|
 |:--:|
 |*Model Results*|
 
-The tree-based models (Random Forest and Gradient Boosting Classifier) far outperformed non-tree-based counterparts (Logistic Regression and RBF-Kernel Support Vector Classifier). Considering the nature of the data and number of classes, this was not too surprising!
+The tree-based models (Random Forest and Histogram-based Gradient Boosting Classifier) far outperformed non-tree-based counterparts (Logistic Regression and RBF-Kernel Support Vector Classifier). Considering the nature of the data and number of classes, this was not too surprising. Tree-based classifiers are all the rage due to their ability to pick up signal while mitigating overfitting, plus with 41 classes, a model which can detect nuanced, nonlinear relationships between predictor and class was likely to do well.
 
-Given that the classes weren't balanced, I was concerned that we may have achieved strong accuracy by predicting the larger classes. Reviewing the results, I was pleased to see that the classifier did well on small and large classes alike.
+Given that the classes weren't balanced, I was concerned that we may have achieved strong accuracy just by predicting the larger classes. Reviewing the results, I was pleased to see that the classifier did well on small and large classes alike.
 
 |![Predictions vs Actuals](/images/beercharacteristics/prediction_counts.png)|
 |:--:|
@@ -56,11 +56,7 @@ In fact, the classes that struggled the most made a lot of sense. For example, t
 
 ![Misses - Lager](/images/beercharacteristics/miss_summary_lager.png)
 
-Similarly, Porters and Stouts were tough to distinguish.
-
-![Misses - Stout](/images/beercharacteristics/miss_summary_stout.png)
-
-Overall, the tree-based classifier provided a strong result (balanced accuracy of 0.86) while classifying well against large and small classes alike.
+Overall, the HGBT classifier provided a strong result (balanced accuracy of 0.86) while classifying well against large and small classes alike.
 
 ---
 
