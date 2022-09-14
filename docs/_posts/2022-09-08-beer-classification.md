@@ -14,9 +14,9 @@ skills: scikit-learn pipelines, multiclass algorithms and scoring, multiple mode
 
 ## Context
 
-This one was just for fun! I was poking around at beer data and came across a pretty clean dataset on Kaggle with beer flavor and aroma profiles, along with the beer source information (name, type, brewery). It got me wondering, how easy is it to mathematically tell different beer types apart?
+I don't know much about beer, but I like it. I was poking around at beer data and came across a pretty clean dataset on Kaggle with flavor and aroma profiles, along with the beer source information (name, type, brewery). It got me wondering, how easy is it to mathematically tell different beer style apart?
 
-For those that drink beer, some types are very clearly different (an IPA vs a light lager, for example), and others are not (like a porter and a stout). Maybe machine learning can do better.
+Some are clearly different (an IPA vs a light lager, for example), and others are not (like a porter and a stout). Maybe machine learning can do better than I would, especially after a few.
 
 ## Objective
 
