@@ -36,7 +36,8 @@ Notebooks and a process walkthrough is provided at the bottom of the post.
 
 ## Outcome
 
-After exploring six different families of models, each tested for their best hyperparameters, I selected a Histogram-Based Gradient Boosting Classifier with a balanced accuracy score of .866! **Note**: Balanced accuracy here refers to sklearn's `balanced_accuracy_score`, an average of the class accuracy across all classes.
+After exploring six different families of models, each tested for their best hyperparameters, I selected a Histogram-Based Gradient Boosting Classifier with a balanced accuracy score of .866! 
+**Note**: Balanced accuracy here refers to sklearn's `balanced_accuracy_score`, an average of the class accuracy across all classes.
 
 |![Model Results](/images/beercharacteristics/model_balanced_accuracy.png)|
 |:--:|
@@ -58,6 +59,8 @@ Similarly, Porters and Stouts were tough to distinguish.
 
 ![Misses - Stout](/images/beercharacteristics/miss_summary_stout.png)
 
+Overall, the tree-based classifier provided a strong result (balanced accuracy of 0.86) while classifying well against large and small classes alike.
+
 ---
 
 # What I Took Away
@@ -71,7 +74,7 @@ As I mentioned, this was an opportunity for me to explore a number of things on 
     * `StratifiedKFold` and stratification in `test_train_split`
     * Custom scoring using individual scores from the `scoring` library
 * All of the `pandas` (as usual)
-* Radar plots from scratch in `matplotlib`
+* Radar plots in `matplotlib`
 * `seaborn` for all other vis
 * `textwrap` library for custom plot text wrapping (it's the little things)
 
@@ -81,23 +84,24 @@ There were a few specific lessons learned, some the hard way:
 
 * **Deep-diving convergence errors can take a while** - Both the SVC and logistic regression struggled to converge at many points during parameter search. This was alleviated some by increasing the number of iterations, but ultimately, it turned out that if the regularization penalty was too small, the models often had trouble keeping coefficients stable. In addition, having too few principal components also seemed to cause instability.
 * **Radar charts ain't always right** - Although I liked radar charts here, they only allowed for general comparison of different attributes of a beer. In this case, since we never really needed to know to the decimal point if one attribute was higher than another for a beer, that was fine. I also liked how they showed the 'shape' of a beer here. However, I had to move to faceted bar charts if I really wanted to compare things
-
----
-
-# What I Enjoyed
-
-* **Getting to know scorig metrics is useful if mind-bending** - XX - add detail
-* **Radar charts & info graphic design can be nice sometimes** - XX - add detail
-* **Pickle & parquet files are my friend** - XX - add detail
-* **Good results are fun** - XX - add detail
+* **Getting to know scoring metrics is useful if mind-bending** - Deep-diving precision, recall, and f1 score in a multiclass setting was interesting. The binary versions of these metrics are fairly easy to understand, but once more than one class is introduced, we also have to decide a way to average (micro, macro, or weighted). It turns out, you end up needing to look at all metrics to get a comprehensive view of how the model performs.
+* **Radar charts & info graphic design can be nice sometimes** - Now, I know radar plots (can be contentious)[http://www.thefunctionalart.com/2012/11/radar-graphs-avoid-them-999-of-time.html] due to the difficulty in comparing observations, BUT this seemed like a time where they make sense. The idea is that the radar charts give us a feel for each beer's characteristics without really needing a direct comparison across attributes. Then, we could use a few bar charts to compare beers along the different attributes.
+* **Pickle & parquet files are my friend** - Because model fitting took significant time on my local machine (up to 20 minutes for the nested CV for HGBT), I needed to save out models and dataframes often. Saving gridsearch objects (including fitted estimators) as pickle files was useful, as was saving pandas DataFrames with multiple data types as parquet, to avoid the need for datatype definition on read-in.
+* **Good results are fun** - It was satisfying to have a decently performing classifier, especially on micro-averaged metrics, with so many classes! I'll be honest, I was not optimistic - I figured the model might say 'throw a dart at a beer and it's probably a lager', rather than learn any of the nuance between styles.
 
 ---
 
 # Notebooks
 
+More detail on the project can be found in the form of annotated notebooks on my Github site.
+
+XX - add link to notebooks
+
 ---
 
 # Process Detail
+
+Below you can find a more detailed procedural walkthrough to get an idea of the decisions made as I developed the notebooks.
 
 ## Data Collection, Cleaning & Transformation
 
@@ -141,7 +145,7 @@ However, the ABV column had apparent outliers.
 |:--:|
 |*ABV Boxplot*|
 
-After investigating these and realizing they were more or less gag beers (see this link XX), I removed them from the dataset to avoid misrepresentation of beer types. Theoretically, it may also have been appropriate to create their own category, but with only 3 observations, it would be tough to train and test.
+After investigating these and realizing they were more or less gag beers (e.g. the [Brewmeister Snake Venom](https://www.htfw.com/brewmeister-snake-venom-world-s-strongest-beer-free-branded-glass-beer-lager)), I removed them from the dataset to avoid misrepresentation of beer types. Theoretically, it may also have been appropriate to create their own category, but with only 3 observations, it would be tough to train and test.
 
 This left us with 41 categories, the smallest of which had 20 observations, and a clean dataset for further analysis
 
@@ -178,6 +182,8 @@ For example, if we looked at the radar chart of an IPA, below, we can see that i
 |![Radar Chart Stout](/images/beercharacteristics/spider_Stout.png)|
 |:--:|
 |*Radar Chart, Stout*|
+
+We can also look across the beers and see that the 'louder' beers (e.g. barleywine) have larger total shaded area due to the intensity of their flavor profiles across all 11 dimensions.
 
 |![Radar Charts, All](/images/beercharacteristics/spiders_all.png)|
 |:--:|
