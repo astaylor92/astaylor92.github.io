@@ -1,0 +1,9 @@
+<div>
+  <div class="headshot">
+    <img src="{{ include.image_path }}">
+  </div>
+  <div class="intro_text">
+    <h2 class="hello">{{ include.title }}</h2>
+    {{ include.description | markdownify }}
+  </div>
+</div>
