@@ -58,11 +58,11 @@ Given that the classes weren't balanced, I was concerned that we may have achiev
 
 In fact, the classes that struggled the most made a lot of sense. For example, the Lager class was very often mistaken for a Pilsner, something that I do all the time!
 
-<p align="center">
-    <h5 align="center">Lager - 17 Misclassifications of 142</h5>
-    <img src="/images/beercharacteristics/miss_summary_lager.png">
-    <br>
-    <span align="center" class="figure-caption"> Misclassification Summary - Lager </span>
+<h5 align="center">Lager - 17 Misclassifications of 142</h5>
+<img src="/images/beercharacteristics/miss_summary_lager.png">
+<br>
+<p>
+<span align="center" class="figure-caption"> Misclassification Summary - Lager </span>
 </p>
 
 Overall, the HGBT classifier provided a strong result (balanced accuracy of 0.86) while classifying well against large and small classes alike.
@@ -323,9 +323,10 @@ Interestingly, both the IBU metrics acccounted for most of the model! It turns o
 
 **Misclassification Deep-Dive**: Lastly, I deep-dove some of the top missed categories, examining the profiles of the top 3 beers they were mistaken for. Results here were not surprising, especially in our larger categories. For example, stouts were most commonly confused for porters, which makes sense - both are dark, bitter beers. 
 
+
+<h5 align="center">Stout - 9 Misclassifications of 64</h5>
+<img src="/images/beercharacteristics/miss_summary_stout.png">
+<br>
 <p align="center">
-    <h5 align="center">Stout - 9 Misclassifications of 64</h5>
-    <img src="/images/beercharacteristics/miss_summary_stout.png">
-    <br>
     <span align="center" class="figure-caption"> Misclassification Summary, Stout </span>
 </p>
