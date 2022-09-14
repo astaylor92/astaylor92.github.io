@@ -262,9 +262,9 @@ svc_param_grid = [
 **Model Selection Outcomes**: Maybe unsurprisingly, the tree-based estimators performed much better than logistic regression and SVC. The HGBT model performed the best, and is what was selected for final review.
 
 <p align="center">
-    <img src="/images/beercharacteristics/model_scores.png"  width="80%" height="80%">
+    <img src="/images/beercharacteristics/model_scores.png">
     <br>
-    <span class="figure-caption"> Balanced Accuracy Scores by Model </span>
+    <span class="figure-caption"> Performance Scores by Model </span>
 </p>
 
 In addition, I learned some interesting things about each model's selections:
