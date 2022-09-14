@@ -59,7 +59,7 @@ Given that the classes weren't balanced, I was concerned that we may have achiev
 In fact, the classes that struggled the most made a lot of sense. For example, the Lager class was very often mistaken for a Pilsner, something that I do all the time!
 
 <p align="center">
-    <span class="figure-title">Lager - 17 Misclassifications of 142</span>
+    <h5>Lager - 17 Misclassifications of 142</h5>
     <img src="/images/beercharacteristics/miss_summary_lager.png">
     <br>
     <span class="figure-caption"> Misclassification Summary - Lager </span>
@@ -323,8 +323,8 @@ Interestingly, both the IBU metrics acccounted for most of the model! It turns o
 **Miss Deep-Dive**: Lastly, I deep-dove some of the top missed categories, examining the profiles of the top 3 beers they were mistaken for. Results here were not surprising, especially in our larger categories, as summarizing in the 'What I Did' section.
 
 <p align="center">
-    <span class="figure-title">Lager - 9 Misclassifications of 64</span>
+    <h5>Stout - 9 Misclassifications of 64</h5>
     <img src="/images/beercharacteristics/miss_summary_stout.png">
     <br>
-    <span class="figure-caption"> Misclassification Summary, Lager </span>
+    <span class="figure-caption"> Misclassification Summary, Stout </span>
 </p>
