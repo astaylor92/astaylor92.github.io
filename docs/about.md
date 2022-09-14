@@ -1,6 +1,7 @@
 ---
-layout: default
+layout: about
 permalink: /about/
+author_profile: true
 ---
 
 
@@ -9,4 +10,3 @@ Translating business needs to requirements, prescribing analytics and data scien
 ### Resume
 
 If you're interested a quick overview of my history and skills, please take a look at my resume below. For more detail on some of my work experiences and modeling projects, check out the blog posts found on my home page.
-
