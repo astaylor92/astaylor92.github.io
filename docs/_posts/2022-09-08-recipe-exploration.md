@@ -14,24 +14,26 @@ skills: similary measurement, dash, plotly,
 
 ## Context
 
-While surfing Kaggle for data on my favorite topics (food, beer, music), I came across [this food.com dataset](https://www.kaggle.com/datasets/shuyangli94/food-com-recipes-and-user-interactions) which had a number of interesting data sources. It contained "180K+ recipes and 700K+ recipe reviews covering 18 years of user interactions and uploads on Food.com". This project was completed for a Data & Visual Analytics class in a team of 5 and tasked with finding a project that combines visual design and user interaction, analyzing large datasets (defined as more than 100k records), and analytical technqiues we were learning at the time. These included basic machine learning models, as well as graph analysis (hierarchical clustering, distance measurement, etc.) and similarly measurements such as bag-of-words techniques.
+While surfing Kaggle for data on my favorite topics (food, beer, music), I came across [this food.com dataset](https://www.kaggle.com/datasets/shuyangli94/food-com-recipes-and-user-interactions) which had a number of interesting data sources. It contained "180K+ recipes and 700K+ recipe reviews covering 18 years of user interactions and uploads on Food.com". At the time, I was in a group of 5 doing a group project for a Data & Visual Analytics class. We were tasked with finding a project that combined visual design and user interaction, analyzing large datasets (defined as more than 100k records), and analytical technqiues we were learning at the time.
 
 The world was pretty much our oyster with the dataset. Given that it had recipe information, ingredient information, and user rating interactions, a common approach from others on Kaggle was to attempt to build a recommendation engine using collaborative filtering or other methods. We opted for something a bit more off-the-wall: What if we could build a UI where an existing user could explore recipes that were intentionally **different** than their current cooking?
 
 
 ## Objective
-We wanted to create a unique experience with this project. The goal was to create a user experience to inform the user of their cooking habits and promote exploration of new foods.
+Our goal was to create a user experience to inform the user of their cooking habits and promote exploration of new foods.
 
-First, a user could review their cooking habits against the general population along four dimensions.
+The idea was that someone who already had a food.com account would follow the general three-step flow below:
 
-1. **Ingredients**: What are my most common ingredients? Do I cook with more or fewer ingredients than the typical food.com user?
-2. **Techniques**: What techniques do I often use? How does that compare to the profile of a typical user?
-3. **Cuisine**: How often do I try different cuisines? What other cuisines are out there?
-4. **User Community**: Am I just like others at food.com?
-
-Then, a user would provide two sets of inputs to the recommendation engine. One set would provide boundaries on the recommendations such as nutrition, meal of the day, time to cook, etc. The second set would allow the user to indicate whether the recommendations should be the same, different, or not considered along the four dimensions above - essentially telling the algorithm what to explore.
-
-Finally, the algorithm would generate recommendations and show how the recommendations made the user a more diverse chef.
+> First, a user could review their cooking habits against the general population along four dimensions.
+> 
+> 1. **Ingredients**: What are my most common ingredients? Do I cook with more or fewer ingredients than the typical food.com user?
+> 2. **Techniques**: What techniques do I often use? How does that compare to the profile of a typical user?
+> 3. **Cuisine**: How often do I try different cuisines? What other cuisines are out there?
+> 4. **User Community**: Am I just like others at food.com?
+> 
+> Then, a user would provide two sets of inputs to the recommendation engine. One set would provide boundaries on the recommendations such as nutrition, meal of the day, time to cook, etc. The second set would allow the user to indicate whether the recommendations should be the same, different, or not considered along the four dimensions above - essentially telling the algorithm what to explore.
+> 
+> Finally, the algorithm would generate recommendations and show how the recommendations made the user a more diverse chef.
 
 ## My Role
 Because this was a team project, we tried to define clear roles - data wrangling & EDA, algorithm development, visualization development, project management, and technical writing. My role was technically two-fold: project manager and algorithm developer. However, as project manager and the team member with the most experience with `plotly` and `dash`, I ended up supporting the visualization development heavily. My graphic designer wife also provided valuable input from a UI side.
