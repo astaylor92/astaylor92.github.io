@@ -40,9 +40,10 @@ A more detailed process walkthrough can be found in the last section of this pos
 After surveying six different families of models, each tested for their best hyperparameters, I ended up with a Histogram-Based Gradient Boosting Classifier with relatively sttrong a balanced accuracy score of .866.
 **Note**: Balanced accuracy here refers to sklearn's `balanced_accuracy_score`, an average of the class accuracy across all classes.
 
-|:--:|
-|<img src="/images/beercharacteristics/model_balanced_accuracy.png"  width="50%" height="50%">|
-|*Model Results*|
+<p align="center">
+<img src="/images/beercharacteristics/model_balanced_accuracy.png"  width="50%" height="50%">
+Model Results
+</p>
 
 The tree-based models (Random Forest and Histogram-based Gradient Boosting Classifier) far outperformed non-tree-based counterparts (Logistic Regression and RBF-Kernel Support Vector Classifier). Considering the nature of the data and number of classes, this was not too surprising. Tree-based classifiers are all the rage due to their ability to pick up signal while mitigating overfitting, plus with 41 classes, a model which can detect nuanced, nonlinear relationships between predictor and class was likely to do well.
 
