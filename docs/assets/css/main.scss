@@ -24,7 +24,6 @@ html {
     }
   }
 
-.greedy-nav 
-    a:before {
+.greedy-nav .visible-links a:before {
         background: mix(#fff, $primary-color, 50%);
   }
