@@ -61,8 +61,8 @@ In fact, the classes that struggled the most made a lot of sense. For example, t
 <h5 align="center">Lager - 17 Misclassifications of 142</h5>
 <img src="/images/beercharacteristics/miss_summary_lager.png">
 <br>
-<p>
-<span align="center" class="figure-caption"> Misclassification Summary - Lager </span>
+<p align="center">
+<span class="figure-caption"> Misclassification Summary - Lager </span>
 </p>
 
 Overall, the HGBT classifier provided a strong result (balanced accuracy of 0.86) while classifying well against large and small classes alike.
@@ -328,5 +328,5 @@ Interestingly, both the IBU metrics acccounted for most of the model! It turns o
 <img src="/images/beercharacteristics/miss_summary_stout.png">
 <br>
 <p align="center">
-    <span align="center" class="figure-caption"> Misclassification Summary, Stout </span>
+    <span class="figure-caption"> Misclassification Summary, Stout </span>
 </p>
