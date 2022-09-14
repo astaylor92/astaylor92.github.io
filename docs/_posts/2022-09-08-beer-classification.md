@@ -38,7 +38,9 @@ Notebooks and a process walkthrough is provided at the bottom of the post.
 
 After exploring six different families of models, each tested for their best hyperparameters, I selected a Histogram-Based Gradient Boosting Classifier with a balanced accuracy score of .866! **Note**: Balanced accuracy here refers to sklearn's `balanced_accuracy_score`, an average of the class accuracy across all classes.
 
-XX - Model scores & outputs
+|![Model Results](/images/beercharacteristics/model_balanced_accuracy.png)|
+|:--:|
+|*Model Results*|
 
 The tree-based models (Random Forest and Gradient Boosting Classifier) far outperformed non-tree-based counterparts (Logistic Regression and RBF-Kernel Support Vector Classifier). Considering the nature of the data and number of classes, this was not too surprising!
 
@@ -59,14 +61,14 @@ XX - Porter/Stout infographic
 # What I Took Away
 
 ## Technology & Techniques
-As I mentioned, this was an opportunity for me to explore a few new things on the technical side:
+As I mentioned, this was an opportunity for me to explore a number of things on the technical side:
 
-* All of the `pandas`
 * Extensive use of `sklearn`
     * `Pipeline` to formulate
     * Nested CV using `GridsearchCV` and `cross_validate_score`
     * `StratifiedKFold` and stratification in `test_train_split`
     * Custom scoring using individual scores from the `scoring` library
+* All of the `pandas` (as usual)
 * Radar plots from scratch in `matplotlib`
 * `seaborn` for all other vis
 * `textwrap` library for custom plot text wrapping (it's the little things)
@@ -101,9 +103,25 @@ There were a few specific lessons learned, some the hard way:
 **Goals**: Get the data. Make sure the data was there (enough). Check the data had the structure and types I wanted, and transform it if not. Perform veracity and distribution checks on predictors and response.
 
 
-**Collection**: Collection was fairly straightforward. The data came from Kaggle at XX, and I could see even from the Kaggle summary that it was pretty clean. I downloaded the file and pretty quickly moved.
+**Collection**: Collection was fairly straightforward. The data came from Kaggle [here](https://www.kaggle.com/datasets/ruthgn/beer-profile-and-ratings-data-set), and I could see even from the Kaggle summary that it was pretty clean. I downloaded the file and pretty quickly moved. The dataset contained 3,197 unique beers across 934 breweries.
 
-XX - data fields & descriptions
+| Field | Description |
+| :--: | :--: |
+| beer_name | Primary key - identifies the specific beer |
+| style_l1 | Custom 'level 1' style description - the dependent variable in our analysis |
+| min_ibu | Minimum IBU  of the beer |
+| max_ibu | Maximum IBU of the beer |
+| astringency | Astringency of the beer (similar to tannins in wine tasting) |
+| body | Body in terms of mouthfeel |
+| alcohol | Perceived booziness |
+| bitter | Bitterness of the taste |
+| sweet | Sweetness of the taste |
+| sour | Sourness of the taste |
+| salty | Saltiness of the taste |
+| fruits | Fruitiness of the aroma and flavor |
+| hoppy | Hoppiness of the aroma and flavor |
+| spices | Spiciness of the aroma and flavor |
+| malty | Maltiness of the aroma and flavor |
 
 
 **Transformation**: From a transformation standpoint, again, the data was in pretty good shape. The main work here was transforming the 'style' column, which contained 111 categories, some of which had as few as 3-4 instances. However, there was a common structure of "[Beer Style] - [Specific Beer Type]" throughout the set, so splitting the name brought us to 41 beer 'styles'. I also did some minor text formatting here to remove capital letters and spaces for easy indexing and reference in pandas structures.
@@ -197,7 +215,12 @@ pca = PCA()
 svc_estimator = SVC(max_iter=1000)
 
 # Create the Pipeline object
-svc_pipe = Pipeline(steps=[('scaler', scaler), ('pca', pca), ('estimator', svc_estimator)])
+svc_pipe = Pipeline(
+    steps=[
+        ('scaler', scaler),
+        ('pca', pca),
+        ('estimator', svc_estimator)
+        ])
 
 # Create the parameter grid for searching
 svc_param_grid = [
@@ -217,10 +240,36 @@ svc_param_grid = [
 
 In addition, I learned some interesting things about each model's selections:
 
-XX - Model observations
+**Logistic Regression**
+The best logistic regression models are either without regularization or with l2 regularization. This makes sense - we've already reduced to 4-6 principal components, so we shouldn't need much penalization to model complexity, especially removal of variables using l1. We can also see that C-values of 10,000 were most often selected, which supports the idea that little regulariztion is needed. There was instability in the parameter selection, especially in LASSO, which could be further investigated if it becomes relevant.
+
+**SVC**
+Unsurprisingly, the more flexible kernel (RBF) provided best results. All 10 folds selcted a C value of 100.
+
+**HGBT**
+Interestingly, the higher depth was selected (8), which isn't necessarily needed in a boosting algorithm. In addition, the faster learning rate was also chosen every time. In one instance, the lower number of boosters (250) was picked.
+
+**Random Forest**
+This one was not incredibly consistent - ultimately, a depth of 16 was picked, along with the most trees in the forest. The lowest min_samples_split was also picked to allow for the deepest trees and smallest leaves.
 
 ## Final Model Tuning & Output Analysis
 
-**Goals**: Fit the final model on the full dataset, analyze overall performance, deep-dive misses
+**Goals**: Fit the final model on the full dataset, analyze overall performance, understand feature importance, deep-dive misses
 
-XX - add detail
+**Final Model Fit**: First, I refit HGBT hyperparameters to the full test/validation dataset using `GridSearchCV`. The final parameters were:
+
+XX - final parameters
+
+**Performance Analysis**: Then, I looked at the final performance metrics. I was pleasantly surprised - I saw both high and consistent numbers across precision, recall, and f1 scores averaged in the three ways mentioned above.
+
+XX - final performance metrics
+
+**Feature Importance**: Using permutation importance, I examined which features were most critical to the HGBT model. Permutation importance essentially runs multiple permutations / random shuffling of each predictor and measures the impact on a performance metric (balanced accuracy, in this case). 
+
+XX - feature importance
+
+Interestingly, both the IBU metrics acccounted for most of the model! It turns out the beer styles are nearly seperably defined by their bitterness. Next, the alcohol level, hoppiness, and body were the next differentiators. This is interesting - I maybe would've expected to see a more balanced output, incorporating body and maltiness, but maybe this isn't surprising. IBU is also our most detailed metric, on a different scale than the others, and it's an official number. It may just provide more granularity than others.
+
+**Miss Deep-Dive**: Lastly, I deep-dove some of the top missed categories, examining the profiles of the top 3 beers they were mistaken for. Results here were not surprising, especially in our larger categories, as summarizing in the 'What I Did' section.
+
+XX - infographic
