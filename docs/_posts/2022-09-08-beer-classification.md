@@ -50,13 +50,19 @@ The tree-based models (Random Forest and Histogram-based Gradient Boosting Class
 
 Given that the classes weren't balanced, I was concerned that we may have achieved strong accuracy just by predicting the larger classes. Reviewing the results, I was pleased to see that the classifier did well on small and large classes alike.
 
-|![Predictions vs Actuals](/images/beercharacteristics/prediction_counts.png)|
-|:--:|
-|*Class Predictions vs Actuals*|
+<p align="center">
+    <img src="/images/beercharacteristics/prediction_counts.png"  width="50%" height="50%">
+    <br>
+    <span class="figure-caption"> Class Predictions vs Actuals </span>
+</p>
 
 In fact, the classes that struggled the most made a lot of sense. For example, the Lager class was very often mistaken for a Pilsner, something that I do all the time!
 
-![Misses - Lager](/images/beercharacteristics/miss_summary_lager.png)
+<p align="center">
+    <img src="/images/beercharacteristics/miss_summary_lager.png"  width="50%" height="50%">
+    <br>
+    <span class="figure-caption"> Misclassification Summary - Lager </span>
+</p>
 
 Overall, the HGBT classifier provided a strong result (balanced accuracy of 0.86) while classifying well against large and small classes alike.
 
@@ -134,23 +140,29 @@ Below you can find a more detailed procedural walkthrough to get an idea of the 
 
 **Cleaning**: Veracity checks revealed no nulls (thanks, Kaggle contributor!). From a distribution standpoint, most were consistently between 0 and 100.
 
-|![Histograms](/images/beercharacteristics/histograms_predictors.png)|
-|:--:|
-|*Feature Distributions*|
+<p align="center">
+    <img src="/images/beercharacteristics/histograms_predictors.png"  width="50%" height="50%">
+    <br>
+    <span class="figure-caption"> Feature Distributions </span>
+</p>
 
 However, the ABV column had apparent outliers.
 
-|![ABV Boxplot](/images/beercharacteristics/boxplot_abv.png)|
-|:--:|
-|*ABV Boxplot*|
+<p align="center">
+    <img src="/images/beercharacteristics/boxplot_abv.png"  width="50%" height="50%">
+    <br>
+    <span class="figure-caption"> ABV Boxplot </span>
+</p>
 
 After investigating these and realizing they were more or less gag beers (e.g. the [Brewmeister Snake Venom](https://www.htfw.com/brewmeister-snake-venom-world-s-strongest-beer-free-branded-glass-beer-lager)), I removed them from the dataset to avoid misrepresentation of beer types. Theoretically, it may also have been appropriate to create their own category, but with only 3 observations, it would be tough to train and test.
 
 This left us with 41 categories, the smallest of which had 20 observations, and a clean dataset for further analysis
 
-|![Style Counts](/images/beercharacteristics/count_styles_lowremoved.png)|
-|:--:|
-|*Beer Style Counts*|
+<p align="center">
+    <img src="/images/beercharacteristics/count_styles_lowremoved.png"  width="50%" height="50%">
+    <br>
+    <span class="figure-caption"> Beer Style Counts </span>
+</p>
 
 
 ## Exploratory Data Analysis
@@ -160,39 +172,49 @@ This left us with 41 categories, the smallest of which had 20 observations, and 
 
 **Correlation**: The correlation analysis showed a fairly signficant amount of multicollinearity in general. There were the obvious pairs - min IBU and max IBU, alcohol and ABV. There were also other relationships that weren't too surprising once revelated - sour beers tended also to be fruity, and malty beers tended to have a lot of body, for example.
 
-|![Correlation Heatmap](/images/beercharacteristics/corrplot.png)|
-|:--:|
-|*Correlation Heatmap*|
+<p align="center">
+    <img src="/images/beercharacteristics/corrplot.png"  width="50%" height="50%">
+    <br>
+    <span class="figure-caption"> Correlation Heatmap </span>
+</p>
 
 Although the tree-based algorithms shouln't have too much of an issue with this, I eventually needed to take this into with other models such as logistic regression and SVC.
 
 
 **Predictor-Class Relationships**: I took a look at each predictor, and plotted boxplots of the predictor values vs each class. The hope was to see differentiation amongst the classes in at least some of the predictors to provide signal. And we did! The most apparent might've been the IBU plots, show below.
 
-|![Max IBU Boxplots](/images/beercharacteristics/boxplot_dv_max_ibu.png)|
-|:--:|
-|*Boxplots of Style vs Max IBU*|
+<p align="center">
+    <img src="/images/beercharacteristics/boxplot_dv_max_ibu.png"  width="50%" height="50%">
+    <br>
+    <span class="figure-caption"> Boxplots of Style vs Max IBU </span>
+</p>
 
 
 **Beer Style Characteristics**: Essentially, here I wanted to take a look at the general profile of each beer. Now, I know radar plots (can be contentious)[http://www.thefunctionalart.com/2012/11/radar-graphs-avoid-them-999-of-time.html] due to the difficulty in comparing observations, BUT this seemed like a time where they make sense. The idea would be that radar charts give us a feel for each beer's characteristics without really needing a direct comparison across attributes. Then, we could use a few bar charts to compare beers along the different attributes.
 
 For example, if we looked at the radar chart of an IPA, below, we can see that it's generally very malty and bitter, with a lot of body. It's also more sweet than hoppy. We can't really tell if the value for malty is more than bitter, but in this case, we don't care about those values to that level of detail.
 
-|![Radar Chart Stout](/images/beercharacteristics/spider_Stout.png)|
-|:--:|
-|*Radar Chart, Stout*|
+<p align="center">
+    <img src="/images/beercharacteristics/spider_Stout.png"  width="50%" height="50%">
+    <br>
+    <span class="figure-caption"> Radar Chart, Stout </span>
+</p>
 
 We can also look across the beers and see that the 'louder' beers (e.g. barleywine) have larger total shaded area due to the intensity of their flavor profiles across all 11 dimensions.
 
-|![Radar Charts, All](/images/beercharacteristics/spiders_all.png)|
-|:--:|
-|*Radar Charts, All Styles*|
+<p align="center">
+    <img src="/images/beercharacteristics/spiders_all.png"  width="50%" height="50%">
+    <br>
+    <span class="figure-caption"> Radar Charts, All Styles </span>
+</p>
 
 However, if we wanted to compare across beers (e.g. which beers were sweetest), we would take a look at something like the bar chart below.
 
-|![Sweetness by Style](/images/beercharacteristics/sweetness_by_style.png)|
-|:--:|
-|*Sweetness by Style*|
+<p align="center">
+    <img src="/images/beercharacteristics/sweetness_by_style.png"  width="50%" height="50%">
+    <br>
+    <span class="figure-caption"> Sweetness by Style </span>
+</p>
 
 
 ## Model Selection
@@ -241,9 +263,11 @@ svc_param_grid = [
 
 **Model Selection Outcomes**: Maybe unsurprisingly, the tree-based estimators performed much better than logistic regression and SVC. The HGBT model performed the best, and is what was selected for final review.
 
-|![Model Results](/images/beercharacteristics/model_scores.png)|
-|:--:|
-|*Model Results*|
+<p align="center">
+    <img src="/images/beercharacteristics/model_scores.png"  width="50%" height="50%">
+    <br>
+    <span class="figure-caption"> Balanced Accuracy Scores by Model </span>
+</p>
 
 In addition, I learned some interesting things about each model's selections:
 
@@ -287,12 +311,18 @@ This one was not incredibly consistent - ultimately, a depth of 16 was picked, a
 
 **Feature Importance**: Using permutation importance, I examined which features were most critical to the HGBT model. Permutation importance essentially runs multiple permutations / random shuffling of each predictor and measures the impact on a performance metric (balanced accuracy, in this case). 
 
-|![Feature Importance](/images/beercharacteristics/feature_importance.png)|
-|:--:|
-|*Feature Importance*|
+<p align="center">
+    <img src="/images/beercharacteristics/feature_importance.png"  width="50%" height="50%">
+    <br>
+    <span class="figure-caption"> Permutation Feature Importance </span>
+</p>
 
 Interestingly, both the IBU metrics acccounted for most of the model! It turns out the beer styles are nearly seperably defined by their bitterness. Next, the alcohol level, hoppiness, and body were the next differentiators. This is interesting - I maybe would've expected to see a more balanced output, incorporating body and maltiness, but maybe this isn't surprising. IBU is also our most detailed metric, on a different scale than the others, and it's an official number. It may just provide more granularity than others.
 
 **Miss Deep-Dive**: Lastly, I deep-dove some of the top missed categories, examining the profiles of the top 3 beers they were mistaken for. Results here were not surprising, especially in our larger categories, as summarizing in the 'What I Did' section.
 
-![Misses - Lager 2](/images/beercharacteristics/miss_summary_lager.png)
+<p align="center">
+    <img src="/images/beercharacteristics/miss_summary_lager.png"  width="50%" height="50%">
+    <br>
+    <span class="figure-caption"> Misclassification Summary, Lager </span>
+</p>
