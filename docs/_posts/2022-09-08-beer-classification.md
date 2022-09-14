@@ -51,7 +51,7 @@ The tree-based models (Random Forest and Histogram-based Gradient Boosting Class
 Given that the classes weren't balanced, I was concerned that we may have achieved strong accuracy just by predicting the larger classes. Reviewing the results, I was pleased to see that the classifier did well on small and large classes alike.
 
 <p align="center">
-    <img src="/images/beercharacteristics/prediction_counts.png"  width="50%" height="50%">
+    <img src="/images/beercharacteristics/prediction_counts.png">
     <br>
     <span class="figure-caption"> Class Predictions vs Actuals </span>
 </p>
@@ -59,7 +59,8 @@ Given that the classes weren't balanced, I was concerned that we may have achiev
 In fact, the classes that struggled the most made a lot of sense. For example, the Lager class was very often mistaken for a Pilsner, something that I do all the time!
 
 <p align="center">
-    <img src="/images/beercharacteristics/miss_summary_lager.png"  width="50%" height="50%">
+    <span class="figure-title">Lager - 17 Misclassifications of 142</span>
+    <img src="/images/beercharacteristics/miss_summary_lager.png">
     <br>
     <span class="figure-caption"> Misclassification Summary - Lager </span>
 </p>
@@ -322,7 +323,8 @@ Interestingly, both the IBU metrics acccounted for most of the model! It turns o
 **Miss Deep-Dive**: Lastly, I deep-dove some of the top missed categories, examining the profiles of the top 3 beers they were mistaken for. Results here were not surprising, especially in our larger categories, as summarizing in the 'What I Did' section.
 
 <p align="center">
-    <img src="/images/beercharacteristics/miss_summary_lager.png"  width="50%" height="50%">
+    <span class="figure-title">Lager - 9 Misclassifications of 64</span>
+    <img src="/images/beercharacteristics/miss_summary_stout.png">
     <br>
     <span class="figure-caption"> Misclassification Summary, Lager </span>
 </p>
