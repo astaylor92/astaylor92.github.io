@@ -14,15 +14,15 @@ skills: scikit-learn pipelines, multiclass algorithms and scoring, multiple mode
 
 ## Context
 
-This one was just for fun! I was poking around at beer data and came across a pretty clean dataset on Kaggle with characteristics of beer tastes, along with the beer source information (name, type, brewery). It got me wondering, how easy is it to mathematically tell different beer types apart?
+This one was just for fun! I was poking around at beer data and came across a pretty clean dataset on Kaggle with beer flavor and aroma profiles, along with the beer source information (name, type, brewery). It got me wondering, how easy is it to mathematically tell different beer types apart?
 
-For those that drink beer, some types are very clearly different (an IPA vs a light lager, for example), and others are not (like a porter and a stout). However, with this dataset providing 14 different features, maybe we can classify beers pretty well!
+For those that drink beer, some types are very clearly different (an IPA vs a light lager, for example), and others are not (like a porter and a stout). Let's see if we can model it.
 
 ## Objective
 
-The goal was simply to train a multiclass classifier to predict a beer's style from its characteristics. 
+Train a multiclass classifier to predict a beer's style from its characteristics. That's it.
 
-Selfishly, I also hadn't used `scikit-learn`'s `Pipeline` object too much yet, and I also wanted to dive deeper into multiclass classification scoring and metrics, since most of my experience dealt with the binary case.
+Selfishly, I also wanted to get a few reps with `scikit-learn`'s `Pipeline` object and dive deeper into multiclass classification scoring and metrics, since most of my experience has dealt with the binary case.
 
 ## Approach
 
@@ -30,14 +30,14 @@ I took a fairly standard approach to this problem, going through the following s
 
 1. **Data Collection, Cleaning & Transformation**: Get the data. Make sure the data was there (enough). Check the data had the structure and types I wanted, and transform it if not. Perform veracity and distribution checks on predictors and response.
 3. **Exploratory Data Analysis**: Check the correlation of predictors, understand their relationship to the classes, and get an idea of each beer style's characteristics.
-4. **Model Selection**: Define initial model families (e.g. "logistic regression"), outline model selection scheme, develop evaluation pipelines, and select model family.
-5. **Final Model Tuning & Output Analysis**Fit the final model on the full dataset, analyze overall performance, and deep-dive misses.
+4. **Model Selection**: Define initial model families (e.g. "logistic regression"), outline a model selection scheme, develop evaluation pipelines, and select model family.
+5. **Final Model Tuning & Output Analysis**: Fit the final model on the full dataset, analyze overall performance, evaluate feature performance, and deep-dive misses.
 
-Notebooks and a process walkthrough is provided at the bottom of the post.
+A more detailed process walkthrough can be found in the last section of this post.
 
 ## Outcome
 
-After exploring six different families of models, each tested for their best hyperparameters, I selected a Histogram-Based Gradient Boosting Classifier with a balanced accuracy score of .866! 
+After surveying six different families of models, each tested for their best hyperparameters, I ended up with a Histogram-Based Gradient Boosting Classifier with relatively sttrong a balanced accuracy score of .866.
 **Note**: Balanced accuracy here refers to sklearn's `balanced_accuracy_score`, an average of the class accuracy across all classes.
 
 |![Model Results](/images/beercharacteristics/model_balanced_accuracy.png)|
