@@ -36,7 +36,7 @@ The idea was that someone who already had a food.com account would follow the ge
 > Finally, the algorithm would generate recommendations and show how the recommendations made the user a more diverse chef.
 
 ## My Role
-Because this was a team project, we tried to define clear roles - data wrangling & EDA, algorithm development, visualization development, project management, and technical writing. My role was technically two-fold: project manager and algorithm developer. However, as project manager and the team member with the most experience with `plotly` and `dash`, I ended up supporting the visualization development heavily. My graphic designer wife also provided valuable input from a UI side.
+Because this was a team project, we tried to define clear roles - data wrangling & EDA, algorithm development, visualization development, project management, and technical writing. My role was technically two-fold: project manager and algorithm developer. However, as project manager and the team member with the most experience with `plotly` and `dash`, I ended up supporting the visualization development heavily and filling in elsewhere as needed to meet deadlines. 
 
 ## Approach
 After outlining the user experience above, the team came up with the project plan below.
