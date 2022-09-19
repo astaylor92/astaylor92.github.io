@@ -101,7 +101,4 @@ XX - note on demo
 # Writeup
 
 <object data="/images/fooddotcom/report.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="/images/fooddotcom/report.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="/images/fooddotcom/report.pdf">Download PDF</a>.</p>
-    </embed>
 </object>
