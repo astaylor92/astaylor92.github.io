@@ -59,29 +59,32 @@ Overall, the final product of this project was a success. The recommendation eng
 | ![S3](/images/fooddotcom/screenshot_p1s3.png) | *Second page - user input and recommendation output* |
 | ![S4](/images/fooddotcom/screenshot_p1s2.png) | *Second page - comparisons of recommendations to behaviors* |
 
-If you're interested in more detail, see the 'Detail' section at the bottom of the page.
-
 ---
 
 # What I Took Away
 
 ## Technology & Techniques
-* word2vec
-* Spark
-* hierarchical clustering
-* Scoring 
-* git
-* Heroku
-* dash
-* plotly
-* networkx
-* Louvain's algorithm
+
+This was an exciting one to work on because I got to actively develop user interface in something other than Tableau, as well as learn some algorithms for similarity measurement and graph analysis that I hadn't before.
+
+**Algorithm**
+* *word2vec & cosine similarity for ingredient similarity* - we used the `gensim` library to implement Word2Vec, which we used to score the similarity of all 15k ingredients to each other, based on the degree to which they shared similar recipes. From there, we could look at the top rated recipes for a user, sum up the ingredient vector for all of thoese recipes, and get a blended / overall view of what ingredients are most like the ingredients in their top recipes. Finally, we used cosine similarity to measure the distance from that vector to any given recipe, to be able to rank recipes as either 'similar to' existing ingredients or 'different from'.
+* *Spark & MLlib for community analysis* - analyzing recipes by their shared user base with other recipes pretty quickly led us to generating a graph matrix (weighted, where nodes are recipes and edges are weighted by the % of total users that are shared between the two) and performing graph analysis. It turns out that Spark, and MLlib specifically, have a growing amount of functionality to handle this, and are even compatible with `networkx`! I used a variety of functions from that library, including their impleentation of Djikstra's algorithm, hierarchical clustering and bisection capabilities.
+* *Amazon Sagemaker for graph scaling* - In order to do some of the graph analysis, I needed to scale above my local machine. Opting for the quick and dirty approach (and because I had some credits), I spun up an Amazon Sagemaker instance to do this.
+
+**UI and Implementation**
+* *git for version control* - This seems obvious, but our school initially had us using the Sharepoint-based file system in Microsoft Teams to share and work on files. We quickly switched to git, which was great. We especially liked being able ot deploy our Heroku app from the Team's repository, which leads us to...
+* *Heroku for public hosting* - We deployed the app from our github repo, which was great because it gave us a way to easily demo the capability!
+* *dash, html, and css for app hosting* - This was probably the thing I most enjoyed working in, although its application to real-world / enterprise scenarios is questionable. I spent a lot of time understanding the guts of the layout - callback system, as well as thoroughly customizing the pages using html and css.
+* *plotly for dynamic plotting* - Although it was a bit of pain compared to more intuitive visualization libraries and softwares, `plotly` is highly ocmpatible with `dash`, allowing us to make efficient, effective visualizations which changed as inputs such as the user name and the recommendation parameters were updated by a user.
+* *networkx for graph manipulation* - After we did the heavy lifting for graph analysis in Spark, we used networkx to store and manipulate graph objects for the user interface and visualization
 
 ## Lessons Learned
 
-* XX - data wrangling is never done
-* XX - page design
-* XX - unsupervised testing
+* **Data Wrangling is Iterative** - This is obvious, and I definitely knew it beforehand, but our team collectively learned this lesson repeatedly. It was not uncommon that, as the algorithm developers tested new theories and had ideas, they had to go back to the EDA and transformation team and ask for updates to data schemas, filters, etc. Often, those requests had a cascading dependency to other code, which often required careful changes.
+* **UI Design is Not Easy** - We built an "app" on static html that is very basic and by no means sophisticated. I think going forward, it will be important for me to distinguish a quick dashboard-based app like this or something in Tableau from more intensely developed products which require teams of developers. 
+* **Unsupervised Modeling is Ambiguous** - Another 'duh' moment, but because we wanted to intentionally recommend a 'different' recipe, we didn't have a great way to test for effectiveness. We had user ratings, but that wouldn't reward the recommender if a recipe was 'different' in the right way. While we did perform a variety of functional and gutcheck tests, we simply couldn't evaluate the exact performance of the interface without user testing.
+* **Graph Analysis can get BIG** - When I was working with the graph analysis for clustering recipes based on their shared users, I realized just how quickly the graph size can scale. I ended up working with a graph with ~150k nodes and ~12M edges, requiring me to spin up an Amazon Sagemaker instance just to scale the compute power appropriately. 
 
 ---
 
@@ -98,13 +101,3 @@ XX - note on demo
 # Writeup
 
 XX - add embedded report
-
----
-
-# Detail
-
-## Algorithm Chosen
-
-## Visualization Approach & Techniques
-
-## Testing and Evaluation
