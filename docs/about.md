@@ -17,5 +17,5 @@ In the past, my work consisted of providing data-driven recommendations and deve
 
 If you're interested a quick overview of my history and skills, please take a look at my resume below. For more detail on some of my work experiences and modeling projects, check out the blog posts found on my home page.
 
-<object data="/images/AndrewTaylor_Resume_202207.pdf" type="application/pdf" width="700px" height="700px">
+<object data="{{ site.url }}{{ site.baseurl }}/images/AndrewTaylor_Resume_202207.pdf" type="application/pdf" width="700px" height="700px">
 </object>
