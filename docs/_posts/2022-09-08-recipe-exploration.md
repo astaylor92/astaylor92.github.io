@@ -53,17 +53,11 @@ This was a fairly straightforward set of steps, although due to a short timeline
 
 Overall, the final product of this project was a success. The recommendation engine performed well in terms of recommendation performance, application performance (response time), quasi-functional/unit tests, and user interaction tests. I'm also just proud of the way the final UI turned out - see screenshots below for examples, or feel free to check out the 'Demo' section below if you want to clone and run the algorithm yourself!
 
-![S1](/images/fooddotcom/screenshot_p1s1.png)
-*First page - summary statistics for a given user*
-
-![S2](/images/fooddotcom/screenshot_p1s2.png)
-*First page - summary statistics for a given user (cont.)*
-
-![S3](/images/fooddotcom/screenshot_p1s3.png)
-*Second page - user input and recommendation output*
-
-![S4](/images/fooddotcom/screenshot_p1s2.png)
-*Second page - comparisons of recommendations to behaviors*
+|:---:|:---|
+| ![S1](/images/fooddotcom/screenshot_p1s1.png) | *First page - summary statistics for a given user* |
+| ![S2](/images/fooddotcom/screenshot_p1s2.png) | *First page - summary statistics for a given user (cont.)* |
+| ![S3](/images/fooddotcom/screenshot_p1s3.png) | *Second page - user input and recommendation output* |
+| ![S4](/images/fooddotcom/screenshot_p1s2.png) | *Second page - comparisons of recommendations to behaviors* |
 
 If you're interested in more detail, see the 'Detail' section at the bottom of the page.
 
