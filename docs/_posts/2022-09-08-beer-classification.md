@@ -6,10 +6,6 @@ classes: wide
 skills: scikit-learn pipelines, multiclass algorithms and scoring, multiple model family selection, classification, visualization
 ---
 
-# TODO FILL IN ALL "XX"s
-
----
-
 # What I Did
 
 ## Context
@@ -98,7 +94,7 @@ This was an opportunity for me to explore a number of things on the technical si
 
 More detail on the project can be found in the form of annotated notebooks on my Github site.
 
-XX - add link to notebooks
+[Github Repo](https://github.com/astaylor92/beercharacteristics/tree/master)
 
 ---
 
