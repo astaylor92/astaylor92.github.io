@@ -55,6 +55,8 @@ Overall, the final product of this project was a success. The recommendation eng
 | ![S3](/images/fooddotcom/screenshot_p1s3.png) | *Second page - user input and recommendation output* |
 | ![S4](/images/fooddotcom/screenshot_p1s2.png) | *Second page - comparisons of recommendations to behaviors* |
 
+Additional detail on the work is included in the 'Detail' section at the bottom of the page.
+
 ---
 
 # What I Took Away
@@ -94,6 +96,6 @@ NOTE - Please read the README file in the repo for instructions on how to quickl
 
 ---
 
-# Writeup
+# Detail
 
-Feel free to download the report [here](/images/fooddotcom/report.pdf)
+Feel free to download the report with more procedural detail [here](/images/fooddotcom/report.pdf)
