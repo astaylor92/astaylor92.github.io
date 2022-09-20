@@ -6,10 +6,6 @@ classes: wide
 skills: similary measurement, dash, plotly, 
 ---
 
-# TODO FILL IN ALL "XX"s
-
----
-
 # What I Did
 
 ## Context
@@ -92,9 +88,9 @@ This was an exciting one to work on because I got to actively develop user inter
 
 More detail on the project can be found in the form of annotated notebooks on my Github site.
 
-XX - add link to notebooks
+[Github Repo](https://github.com/astaylor92/fooddotcom)
 
-XX - note on demo
+NOTE - Please read the README file in the repo for instructions on how to quickly deploy a demo of the app.
 
 ---
 
