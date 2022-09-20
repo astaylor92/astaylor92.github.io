@@ -13,7 +13,7 @@ skills:
 ## Context
 This project was something I'd been interested in for a while. I've toyed around with Spotify's API here and there, but most of my machine-learning ideas require having some sort of 'database', and the majority of Spotify's API is on-demand. I'd have to know the artist, song, playlist, etc. that I wanted to search before querying the API.
 
-Enter musicbrainz. I'd heard of the 'Million Song Dataset' from echonest before, but hadn't done of a lot of research ever since looking for it once and finding out it had been taken down (Spotify acquired their IP and eventually the site went away). This time around, when I was looking for it, I came across [musicbrainz](https://musicbrainz.org/). This site's main goal is to "become the ultimate source of all music information". This includes but is definitely not limited to taking down a record of all music recordings, cataloguing them, and creating unique IDs. The reason this was interesting to me is because I'd **also** found out that last.fm's API will provide a track's song listens as well as the musicbrainz id associated with them. Also, you can download a mirror of this database, and effectively access close to every song ever made.
+Enter [musicbrainz](https://musicbrainz.org/). This site's main goal is to "become the ultimate source of all music information". This includes taking down a record of all music recordings, cataloguing them, and creating unique IDs. The reason this was interesting to me is because I'd **also** found out that last.fm's API will provide a track's song listens as well as the musicbrainz id associated with them. Also, you can download a mirror of this database, and effectively access close to every song ever made.
 
 Finally, I'd always been fascinated with using Spotify API's [audio analysis](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-analysis) to see if the audio features of a track can help us understand its popularity. However, Spotify's API does not provide a real measure of popularity - just their vague 1-100 scale of popularity, which is point-in-time. 
 
@@ -28,17 +28,64 @@ The overall approach for this was fairly straightforward, but the devil was in t
 XX - Approach chevron boxes
 
 **Goals of Each Step**
-XX - add goals
+1. *Data Collection & Merging* - Develop 'database' of tracks from musicbrainz filtered to a sample year (2019), call Spotify and last.fm APIs to collect dependent variable and features, merge datasets using fuzzy logic as needed
+2. *EDA & Data Preparation* - Evaluate data cleanliness, conduct univariate and multivariate analyses, analyze multicollinearity, encode categorical variables, and split data in test-train sets
+3. *Model Selection* - Score and evaluate model families with hyperparameter tuning, select a go-forward model family for predictive power, select a go-forward model for feature comparison
+4. *Model Evaluation - Predictive Power* - Evaluate best model family for predictive power, understand how well popularity can be predicted from audio and artist features
+5. *Model Evaluation - Feature Analysis* - Evaluate best model family for feature importance, understand which features have the most significant relationships with song popularity.
+
+**Note** - a detailed PDF report on this is included at the bottom, in the 'Detail' section.
 
 ## Outcome
-XX - add outcome
+Ultimately, the model strengths were all fairly weak, from a performance standpoint, but we're able to learn a thing or two about audio features of popular songs.
+
+**Performance**
+
+XX - MODEL SCORES
+
+When we look at the most preditive model family, XX, we see that it still has a low R-squared value. However, this result might also tell us simply that it's far more complex to predict popularity than we thought. More specifically, this might tell us that trying to regress an exact play count (as opposed to 'hit or not' categorizations which are often used in this type of analysis), is very complex.
+
+**Features**
+
+To analyze features, we looked at our LASSO model output.
+
+XX - feature scores
+
+* **Ignored Features** - Valence, whether or not a song has a discernable time signature, and a number of keys (D, Eb, E, F\#, and G) did not have significant enough impact to be kept by the Lasso algorithm's regularization
+* **Significant Feature - Artist Followers** -  The number of followers an artist has was highly significant, with a positive coefficient indiciating that each 1 additional follower may lead to as much as 0.04 additional listeners to a particular song
+* **Significant Feature - Artist Popularity** - This similarly tells us that Spotify's measure of artist popularity (vaguely described as calculated from the popularity of the artists' tracks)
+* **Significant Feature - Speechiness** - This showed a negative relationship, meaning that the more talking a track contains, the fewer plays it gets
+* **Significant Feature - Liveness** - Interestingly, this showed a positive relationship, meaning the more live a track was, the more popular it was
+* **Significant Feature - Acousticness** - This showed a negative relationship, meaning that the more acoustic a track is, the fewer plays it gets
+* **Significant Feature - Danceability** - This showed a negative relationship, which was sur- prising - one might think that a more ‘danceable’ track is more likely to be popular
+* **Significant Feature - Key of C#** - This showed a negative relationship, which makes some sense. This was the only significant feature related to keys - many others (especially popular keys) were excluded from the model. It seems that this is a less popular key to compose in (fewer songs were in C# than many other keys), and led to lower play count
+* **Significant Feature - Instrumentalness** - This showed a negative relationship, meaning that the more interumental a track is, the fewer plays it gets. This might make some sense - it does seem that many people enjoy tracks with lyrics
 
 # What I Took Away
 
 ## Technology & Techniques
+* *API calling using `requests` and `time`* - Although I was vaguely aware of pre-existing libraries for API calls, I wanted to get my hands dirty with `requests`. All API calls were written there, using `time` to add waiting periods as-needed.
+* *Fuzzy matching using `fuzzywuzzy`* - I was aware of fuzzy matching logic from my time using Alteryx, and `fuzzywuzzy`'s implementation was very useful when joining up the Spotify and last.fm data. Unfortunately, this was necessary, since last.fm didn't end up having many compatible musicbrainz song-level IDs, forcing me to match album IDs then fuzzymatch the track names.
+* *Flowcharts with diagrams.net* - There's probably better apps out there, but for a free Google Drive-compatible Microsoft Visio knockoff, this was pretty dang good
+* *scikit-learn for model stuff* - Classic. I used HistGradientBoostingRegressor, RandomForest, Lasso, Ridge, and Linear regressions. I also used GridSearchCV and KFolds to write up a consistent nested CV for the inital model eval.
+* *pandas pandas pandas* - Enough said. One new thing this time around was leveraging `.apply()` and dictionaries within rows to iterate through the dataframe and apply fuzzy matching logic.
 
 ## Lessons Learned
+* **Data science is sometimes more like 98% data wrangling** - Look, I knew most projects require 80% data wrangling, cleaning, etc. However - each step of the ETL process here came with like 5 curveballs, so by the end of the day, the vast majority of my time was spent just trying to get the data together.
+* **Proper database schema documentation is great** - Musicbrainz had fantastic documentation of the different terms in their database, as well as documentation of the schema, [here](https://musicbrainz.org/doc/MusicBrainz_Database/Schema). This made the joining, while tedious, WAY easier than fumbling around in tables I knew nothing about.
+* **Helper functions help** - Since I did so much joining and reviewing, I wrote up a few dataframe summary helper functions that proved super useful throughout ETL.
+* **Still left bias on the table** - Because there was a fair amount of loss between my initial dataset and records which were returned from all APIs and survived fuzzy-matching, there's pretty much no way the final dataset isn't biased in some way. More work would be needed to investigate, and even more to rectify this.
+* **Complexity of human decision making** - All that work for a 0.3 R-squared?? Jokes aside, I actually wasn't too surprised to find that it's hard to predict human behavior (play counts), especially to a degree of magnitude. 
+* **APIs are always tougher than they seem** - I do this every time. "Oh, they've got an API - it'll be super easy to get the data". That's true, when you're not marrying up multiple data sources with codes and ID fields that may or may not match. Woof.
 
 ---
 
 # Notebooks
+
+XX - ADD NOTEBOOK LINKS
+
+---
+
+# Detail
+
+XX - add data cleansing detail? in notability, with graphics

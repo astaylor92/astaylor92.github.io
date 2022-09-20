@@ -29,7 +29,7 @@ I took a fairly standard approach to this problem, going through the following s
 4. **Model Selection**: Define initial model families (e.g. "logistic regression"), outline a model selection scheme, develop evaluation pipelines, and select model family.
 5. **Final Model Tuning & Output Analysis**: Fit the final model on the full dataset, analyze overall performance, evaluate feature performance, and deep-dive misses.
 
-A more detailed process walkthrough can be found in the last section of this post.
+**Note** - A more detailed process walkthrough can be found in the last section of this post.
 
 ## Outcome
 
