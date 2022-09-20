@@ -100,5 +100,4 @@ XX - note on demo
 
 # Writeup
 
-<object data="{{ site.url }}{{ site.baseurl }}/images/fooddotcom/report.pdf" type="application/pdf" width="700px" height="700px">
-</object>
+Feel free to download the report [here](/images/fooddotcom/report.pdf)
