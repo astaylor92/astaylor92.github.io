@@ -263,10 +263,14 @@
   }
 
   .archive__item-teaser {
+    max-width: 600px;
+    
     @include breakpoint($small) {
+      max-width: 600px;
     }
 
     @include breakpoint($medium) {
+      max-width: 600px;
     }
   }
 }
