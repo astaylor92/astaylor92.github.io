@@ -96,7 +96,7 @@ To analyze features, we looked at our LASSO model output.
 
 ---
 
-# Detail
+# Detail - Data Collection
 
 For this one, I wanted to do a bit of a deep-dive on the ETL process, to give a better idea of the steps involved in collecting and joining the data. This covers, in detail, the steps taken to complete step 1 - Data Collection & Merging. I'll walk through the steps taken, in sequence, and comment on some of the challenges.
 
