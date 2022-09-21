@@ -214,15 +214,11 @@
     @include breakpoint($small) {
       height: 300px;
       width: 300px;
-      align-items: center;
-      justify-content: center;
     }
 
     @include breakpoint($medium) {
       height: 300px;
       width: 300px;
-      align-items: center;
-      justify-content: center;
     }
   }
 }
