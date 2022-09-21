@@ -2,7 +2,6 @@
 title: "Recipe Exploration Tool"
 excerpt: "Recipe recommendation for those looking to get 'outside their comfort zone' - exploration of similary measurements, scoring heuristics, and front-end design"
 header:
-  image: "/images/fooddotcom/teaser.png"
   teaser: "/images/fooddotcom/teaser.png"
 layout: single
 classes: wide

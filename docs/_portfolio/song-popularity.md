@@ -2,7 +2,6 @@
 title: "Song Popularity Prediction"
 excerpt: "Marrying up last.fm, Spotify, and Musicbrainz data and understand if/how sonic features make a song popular"
 header:
-  image: "/images/songpopularity/teaser.png"
   teaser: "/images/songpopularity/teaser.png"
 layout: single
 classes: wide

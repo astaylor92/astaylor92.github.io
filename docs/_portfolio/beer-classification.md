@@ -2,7 +2,6 @@
 title: "Beer Classification"
 excerpt: "An exploration of multiclass classification algorithms to predict a beer's style by its characteristics"
 header:
-  image: "/images/beercharacteristics/teaser.png"
   teaser: "/images/beercharacteristics/teaser.png"
 layout: single
 classes: wide
