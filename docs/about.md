@@ -15,7 +15,7 @@ In the past, my work consisted of providing data-driven recommendations and deve
 
 ### Resume
 
-If you're interested a quick overview of my history and skills, please take a look at my resume below. For more detail on some of my work experiences and modeling projects, check out the blog posts found on my home page.
+If you're interested a quick overview of my history and skills, please take a look at my resume below. For more detail on some of my work experiences and modeling projects, check out the blog posts found on the home page.
 
 ![Resume](/images/AndrewTaylor_Resume_202207.png)
 
