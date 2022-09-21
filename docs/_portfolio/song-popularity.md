@@ -5,6 +5,8 @@ header:
   teaser: "/images/songpopularity/teaser.png"
 layout: single
 classes: wide
+list_skills: "data collection, API calling, data merging, relational database schema interpretation, regression, feature importance analysis"
+list_techincal: "scikit-learn, pandas, numpy, seaborn, requests, time"
 gallery:
 ---
 

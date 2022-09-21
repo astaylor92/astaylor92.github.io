@@ -5,6 +5,8 @@ header:
   teaser: "/images/fooddotcom/teaser.png"
 layout: single
 classes: wide
+list_skills: "user interface design, interactive tool development, similarity measurement, graph-based clustering, recommendation development"
+list_techincal: "Spark, MLLib, AWS Sagemaker, AWS S3, python (pyspark, plotly, dash, scikit-learn, pandas, numpy, seaborn)"
 gallery:
 ---
 
