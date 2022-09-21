@@ -88,4 +88,42 @@ XX - ADD NOTEBOOK LINKS
 
 # Detail
 
-XX - add data cleansing detail? in notability, with graphics
+For this one, I wanted to do a bit of a deep-dive on the ETL process, to give a better idea of the steps involved in collecting and joining the data. This covers, in detail, the steps taken to complete step 1 - Data Collection & Merging. I'll walk through the steps taken, in sequence, and comment on some of the challenges.
+
+## Musicbrainz - Building the Database
+
+First, I needed to "build the database". This was where musicbrainz's database came in handy. Technically, I could have set up the full PostgreSQL database, but that would've taken quite a bit of time, and at first, I only thought I'd need a few tables. Their database schema is below:
+
+XX - database schema
+
+The number of tables, I soon learned, grew from a single 'tracks' table with track IDs to a combination of 'album'-level and 'track'-level tables. I drew out a full, field-level diagram, but it's... not legible in this format. So a simplified diagram is below.
+
+XX - diagram
+
+**Transformation Steps**
+1. Develop album-level dataset
+    1. Begin with release ID and name
+    2. Join with artist information on the release ID to get the name of the artist for later searching
+    3. Join with release country information on release ID to add in year of release
+    4. Join to medium information (think CD vs tape vs digital) on release ID to get medium ID
+2. Develop track-level dataset
+    1. Begin with track ID and name
+    2. Join with recording to get recording info (think individual recording session) and recording ID
+    3. Join with ISRC table to get ISRC for API calls
+3. Join datasets togethery
+4. Filter for 2019 songs, and take 10% sample
+
+For the most part, all joins were clean. About 2% of records dropped when joining release country information, but otherwise no records dropped until the final filter, which resulted in about 900k records.
+
+## Spotify - Queries
+
+Using the Spotify API was the real limiter. Many of the APIs, as we'll see, had to be done in batches of 50-100 or individual album/track. There was also an invisible rate limit, so code had to be written to read the response headers RETRY statement and make sure pauses were introduced to avoid total timeouts. The diagram below shows the calls and their responses.
+
+XX - diagram
+
+XX - Note on loss
+
+## last.fm - Queries
+
+
+## Final Join and Fuzzy Match
