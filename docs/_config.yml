@@ -73,7 +73,9 @@ google:
   search_engine_id       : # YOUR_SEARCH_ENGINE_ID
   instant_search         : # false (default), true
 collections:
-  - portfolio
+  portfolio:
+    output: true
+    permalink: /:collection/:path/
 
 # SEO Related
 google_site_verification :
