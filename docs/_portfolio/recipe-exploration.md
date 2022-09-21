@@ -5,6 +5,7 @@ header:
   teaser: "/images/fooddotcom/teaser.png"
 layout: single
 classes: wide
+author_profile: true
 list_skills: "recommendation engine, similarity measurement, graph-based clustering, UI design & build"
 list_technical: "Spark, MLLib, AWS Sagemaker, python (pyspark, plotly, dash, scikit-learn, pandas, numpy, seaborn)"
 ---

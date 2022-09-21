@@ -5,6 +5,7 @@ header:
   teaser: "/images/beercharacteristics/teaser.png"
 layout: single
 classes: wide
+author_profile: true
 list_skills: "end-to-end ML pipeline, data cleansing, output visualization, classification model, scoring deep-dive"
 list_technical: "scikit-learn, pandas, numpy, seaborn"
 ---

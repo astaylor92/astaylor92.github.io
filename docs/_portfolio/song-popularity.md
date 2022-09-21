@@ -5,6 +5,7 @@ excerpt: "Marrying up last.fm, Spotify, and Musicbrainz data and understand if/h
 header:
   teaser: "/images/songpopularity/teaser.png"
 classes: wide
+author_profile: true
 list_skills: "API calling, data merging, relational schema interpretation, regression, feature importance analysis"
 list_technical: "scikit-learn, pandas, numpy, seaborn, requests, time"
 ---
