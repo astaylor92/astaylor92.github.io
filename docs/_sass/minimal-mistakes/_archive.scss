@@ -154,33 +154,33 @@
 
   @include breakpoint($small) {
     float: left;
-    width: span(5 of 10);
+    width: span(10 of 10);
 
-    &:nth-child(2n + 1) {
-      clear: both;
-      margin-left: 0;
-    }
+    // &:nth-child(2n + 1) {
+    //   clear: both;
+    //   margin-left: 0;
+    // }
 
-    &:nth-child(2n + 2) {
-      clear: none;
-      margin-left: gutter(of 10);
-    }
+    // &:nth-child(2n + 2) {
+    //   clear: none;
+    //   margin-left: gutter(of 10);
+    // }
   }
 
   @include breakpoint($medium) {
     margin-left: 0; /* override margin*/
     margin-right: 0; /* override margin*/
-    width: span(6 of 12);
+    width: span(12 of 12);
 
-    &:nth-child(2n + 1) {
-      clear: both;
-      margin-left: 0;
-    }
+    // &:nth-child(2n + 1) {
+    //   clear: both;
+    //   margin-left: 0;
+    // }
 
-    &:nth-child(2n + 2) {
-      clear: none;
-      margin-left: gutter(of 12);
-    }
+    // &:nth-child(2n + 2) {
+    //   clear: none;
+    //   margin-left: gutter(of 12);
+    // }
   }
 
   .page__meta {
