@@ -85,6 +85,36 @@
   }
 }
 
+.archive__item-technical {
+  margin-top: 0;
+  font-size: $type-size-6;
+  font-style: italic;
+  color: #3182bd;
+
+  & + p {
+    text-indent: 0;
+  }
+
+  a {
+    position: relative;
+  }
+}
+
+.archive__item-skills {
+  margin-top: 0;
+  font-size: $type-size-6;
+  font-style: italic;
+  color: gray;
+
+  & + p {
+    text-indent: 0;
+  }
+
+  a {
+    position: relative;
+  }
+}
+
 .archive__item-teaser {
   position: relative;
   border-radius: $border-radius;
