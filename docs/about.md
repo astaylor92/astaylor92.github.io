@@ -19,4 +19,4 @@ If you're interested a quick overview of my history and skills, please take a lo
 
 ![Resume](/images/AndrewTaylor_Resume_202207.png)
 
-[Link to PDF Download](/images/fooddotcom/report.pdf)
+[Link to PDF Download](/images/AndrewTaylor_Resume_202207.pdf)
