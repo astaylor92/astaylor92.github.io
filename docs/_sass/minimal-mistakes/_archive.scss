@@ -228,7 +228,7 @@
 
   .archive__item-title {
     margin-top: 0.5em;
-    font-size: $type-size-5;
+    font-size: $type-size-4;
   }
 
   .archive__item-excerpt {
@@ -236,7 +236,7 @@
 
     @include breakpoint($medium) {
       display: block;
-      font-size: $type-size-6;
+      font-size: $type-size-5;
     }
   }
 
@@ -245,8 +245,8 @@
 
     @include breakpoint($medium) {
       display: block;
-      font-size: $type-size-6;
-      color: gray;
+      font-size: $type-size-5;
+      color: gray
       font-style: italic;
     }
   }
@@ -256,7 +256,7 @@
 
     @include breakpoint($medium) {
       display: block;
-      font-size: $type-size-6;
+      font-size: $type-size-5;
       color: #3182bd;
       font-style: italic;
     }
@@ -264,7 +264,7 @@
 
   .archive__item-teaser {
     max-width: 600px;
-    
+
     @include breakpoint($small) {
       max-width: 600px;
     }
