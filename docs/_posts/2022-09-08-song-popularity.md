@@ -108,20 +108,41 @@ First, I needed to "build the database". This was where musicbrainz's database c
     <span class="figure-caption"> Musicbrainz Database Schema </span>
 </p>
 
-The number of tables, I soon learned, grew from a single 'tracks' table with track IDs to a combination of 'album'-level and 'track'-level tables. I drew out a full, field-level diagram, but it's... not legible in this format. So a simplified diagram is below.
+The number of tables, I soon learned, grew from a single 'tracks' table with track IDs to a combination of 'album'-level and 'track'-level tables. I drew out a full, field-level diagram, but it's... not legible in this format. So a set of major steps with simplified diagrams is below.
 
-XX - diagram
+**Step 1** Develop album-level dataset, starting with 'release' table
 
-**Transformation Steps**
-1. Develop album-level dataset, starting with 'release' table
-    A. Join with artist information on the release ID to get the name of the artist for later searching
-    B. Join with release country information on release ID to add in year of release
-    C. Join to medium information (think CD vs tape vs digital) on release ID to get medium ID
-2. Develop track-level dataset, starting with 'track' table
-    A. Join with recording to get recording info (think individual recording session) and recording ID
-    B. Join with ISRC table to get ISRC for API calls
-3. Join datasets together
-4. Filter for 2019 songs, and take 10% sample
+<p align="center">
+    <img src="/images/songpopularity/album_diagram.png"  width="80%" height="80%">
+    <br>
+    <span class="figure-caption"> Step 1 - Album-Level </span>
+</p>
+
+1. Join with artist information on the release ID to get the name of the artist for later searching
+2. Join with release country information on release ID to add in year of release
+3. Join to medium information (think CD vs tape vs digital) on release ID to get medium ID
+
+**Step 2** - Develop track-level dataset, starting with 'track' table
+
+<p align="center">
+    <img src="/images/songpopularity/song_diagram.png"  width="80%" height="80%">
+    <br>
+    <span class="figure-caption"> Step 2 - Song-Level </span>
+</p>
+
+1. Join with recording to get recording info (think individual recording session) and recording ID
+2. Join with ISRC table to get ISRC for API calls
+
+**Step 3** - Join and filter
+
+<p align="center">
+    <img src="/images/songpopularity/final_join.png"  width="80%" height="80%">
+    <br>
+    <span class="figure-caption"> Step 3 - Final Join </span>
+</p>
+
+1. Join album & track-level datasets together
+2. Filter for 2019 songs, and take 10% sample
 
 For the most part, all joins were clean. About 2% of records dropped when joining release country information, but otherwise no records dropped until the final filter, which resulted in about 900k records.
 
