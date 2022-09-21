@@ -41,15 +41,23 @@ Ultimately, the model strengths were all fairly weak, from a performance standpo
 
 **Performance**
 
-XX - MODEL SCORES
+<p align="center">
+    <img src="/images/songpopularity/model_scores.png"  width="80%" height="80%">
+    <br>
+    <span class="figure-caption"> Model Scores, Test Data </span>
+</p>
 
-When we look at the most preditive model family, XX, we see that it still has a low R-squared value. However, this result might also tell us simply that it's far more complex to predict popularity than we thought. More specifically, this might tell us that trying to regress an exact play count (as opposed to 'hit or not' categorizations which are often used in this type of analysis), is very complex.
+When we look at the most preditive model family, Gradient Boosted Regression, we see that it still has a fairly low R-squared value. However, this result might also tell us simply that it's far more complex to predict popularity than we thought. More specifically, this might tell us that trying to regress an exact play count (as opposed to 'hit or not' categorizations which are often used in this type of analysis), is very complex.
 
 **Features**
 
 To analyze features, we looked at our LASSO model output.
 
-XX - feature scores
+<p align="center">
+    <img src="/images/songpopularity/feature_scores.png"  width="80%" height="80%">
+    <br>
+    <span class="figure-caption"> Feature Scores, LASSO model </span>
+</p>
 
 * **Ignored Features** - Valence, whether or not a song has a discernable time signature, and a number of keys (D, Eb, E, F\#, and G) did not have significant enough impact to be kept by the Lasso algorithm's regularization
 * **Significant Feature - Artist Followers** -  The number of followers an artist has was highly significant, with a positive coefficient indiciating that each 1 additional follower may lead to as much as 0.04 additional listeners to a particular song
@@ -94,23 +102,25 @@ For this one, I wanted to do a bit of a deep-dive on the ETL process, to give a 
 
 First, I needed to "build the database". This was where musicbrainz's database came in handy. Technically, I could have set up the full PostgreSQL database, but that would've taken quite a bit of time, and at first, I only thought I'd need a few tables. Their database schema is below:
 
-XX - database schema
+<p align="center">
+    <img src="/images/songpopularity/mb_schema.png"  width="80%" height="80%">
+    <br>
+    <span class="figure-caption"> Musicbrainz Database Schema </span>
+</p>
 
 The number of tables, I soon learned, grew from a single 'tracks' table with track IDs to a combination of 'album'-level and 'track'-level tables. I drew out a full, field-level diagram, but it's... not legible in this format. So a simplified diagram is below.
 
 XX - diagram
 
 **Transformation Steps**
-1. Develop album-level dataset
-    1. Begin with release ID and name
-    2. Join with artist information on the release ID to get the name of the artist for later searching
-    3. Join with release country information on release ID to add in year of release
-    4. Join to medium information (think CD vs tape vs digital) on release ID to get medium ID
-2. Develop track-level dataset
-    1. Begin with track ID and name
-    2. Join with recording to get recording info (think individual recording session) and recording ID
-    3. Join with ISRC table to get ISRC for API calls
-3. Join datasets togethery
+1. Develop album-level dataset, starting with 'release' table
+    A. Join with artist information on the release ID to get the name of the artist for later searching
+    B. Join with release country information on release ID to add in year of release
+    C. Join to medium information (think CD vs tape vs digital) on release ID to get medium ID
+2. Develop track-level dataset, starting with 'track' table
+    A. Join with recording to get recording info (think individual recording session) and recording ID
+    B. Join with ISRC table to get ISRC for API calls
+3. Join datasets together
 4. Filter for 2019 songs, and take 10% sample
 
 For the most part, all joins were clean. About 2% of records dropped when joining release country information, but otherwise no records dropped until the final filter, which resulted in about 900k records.
