@@ -110,7 +110,7 @@ First, I needed to "build the database". This was where musicbrainz's database c
 
 The number of tables, I soon learned, grew from a single 'tracks' table with track IDs to a combination of 'album'-level and 'track'-level tables. I drew out a full, field-level diagram, but it's... not legible in this format. So a set of major steps with simplified diagrams is below.
 
-**Step 1** Develop album-level dataset, starting with 'release' table
+### Step 1 - Develop album-level dataset, starting with 'release' table
 
 <p align="center">
     <img src="/images/songpopularity/album_diagram.png"  width="80%" height="80%">
@@ -122,7 +122,7 @@ The number of tables, I soon learned, grew from a single 'tracks' table with tra
 2. Join with release country information on release ID to add in year of release
 3. Join to medium information (think CD vs tape vs digital) on release ID to get medium ID
 
-**Step 2** - Develop track-level dataset, starting with 'track' table
+### Step 2 - Develop track-level dataset, starting with 'track' table
 
 <p align="center">
     <img src="/images/songpopularity/song_diagram.png"  width="80%" height="80%">
@@ -133,7 +133,7 @@ The number of tables, I soon learned, grew from a single 'tracks' table with tra
 1. Join with recording to get recording info (think individual recording session) and recording ID
 2. Join with ISRC table to get ISRC for API calls
 
-**Step 3** - Join and filter
+### Step 3 - Join and filter
 
 <p align="center">
     <img src="/images/songpopularity/final_join.png"  width="80%" height="80%">
@@ -148,19 +148,37 @@ For the most part, all joins were clean. About 2% of records dropped when joinin
 
 ## Spotify - Queries
 
-Using the Spotify API was the real limiter. Many of the APIs, as we'll see, had to be done in batches of 50-100 or individual album/track. There was also an invisible rate limit, so code had to be written to read the response headers RETRY statement and make sure pauses were introduced to avoid total timeouts. The diagram below shows the calls and their responses. XX - note on loss.
+Using the Spotify API was the real limiter. Many of the APIs, as we'll see, had to be done in batches of 50-100 or individual album/track. There was also an invisible rate limit, so code had to be written to read the response headers RETRY statement and make sure pauses were introduced to avoid total timeouts. The diagram below shows the calls and their responses. 
 
-XX - diagram
+<p align="center">
+    <img src="/images/songpopularity/spotify_api.png"  width="80%" height="80%">
+    <br>
+    <span class="figure-caption"> Spotify API Calls </span>
+</p>
+
+**Note on Loss** - Although 900k records were introduced, due to rate limits, only 50k songs were retrieved from the first API call (ISRC > TRACK URI). From there, due to Spotify's URI system, very minimal loss was experienced in the remaining calls.
 
 ## last.fm - Queries
 
 This was an even trickier call. Initially, I had understood that the last.fm database had musicbrainz IDs for each song. However, I came to find out that their capability for that was discontinued, and they only match MBIDs for albums. This required me to first pull each album, then query for their songs based on the album and track name, which resulted in some loss.
 
-XX - diagram
+<p align="center">
+    <img src="/images/songpopularity/lastfm_api.png"  width="80%" height="80%">
+    <br>
+    <span class="figure-caption"> last.fm API Calls </span>
+</p>
+
+**Note on Loss** - All 50k records from the Spotify API were used, which resulted in 44k albums. The first step, MBID > ALBUM INFO, resulted in about 14% loss. Further, ALBUM INFO > SONG PLAYS resulted in 20% loss. Unfortunately, it looks like last.fm's API and database storage were not as strong as Spotify's.
 
 
 ## Final Join and Fuzzy Match
 
-Finally, I got to marry it all together! First, I joined the query results together using release ID. Then, I used `fuzzywuzzy` to match the track names. At long last, I had a full dataset. XXX - note on loss.
+Finally, I got to marry it all together! First, I joined the query results together using release ID. Then, I used `fuzzywuzzy` to match the track names. At long last, I had a full dataset. 
 
-XX - diagram
+<p align="center">
+    <img src="/images/songpopularity/api_join.png"  width="80%" height="80%">
+    <br>
+    <span class="figure-caption"> Final Join - All Data </span>
+</p>
+
+**Note on Loss** - The final dataset was ~29k records - the 50k records from the Spotify call, reduced by ~40% from the last.fm API.
