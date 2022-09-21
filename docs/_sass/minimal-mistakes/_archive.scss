@@ -249,7 +249,7 @@
     @include breakpoint($medium) {
       display: block;
       font-size: $type-size-5;
-      color: gray
+      color: gray;
       font-style: italic;
     }
   }
