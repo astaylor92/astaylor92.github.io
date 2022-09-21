@@ -1,9 +1,12 @@
 ---
-layout: single
 title: "Recipe Exploration Tool"
-excerpt: Recipe recommendation for those looking to get 'outside their comfort zone' - exploration of similary measurements, scoring heuristics, and front-end design
+excerpt: "Recipe recommendation for those looking to get 'outside their comfort zone' - exploration of similary measurements, scoring heuristics, and front-end design"
+header:
+  image: "/images/fooddotcom/screenshot_p1s1.png"
+  teaser: "/images/fooddotcom/screenshot_p1s1.png"
+layout: single
 classes: wide
-skills: similary measurement, dash, plotly, 
+gallery:
 ---
 
 # What I Did
