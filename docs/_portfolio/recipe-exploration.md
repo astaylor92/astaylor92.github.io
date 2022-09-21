@@ -7,7 +7,6 @@ layout: single
 classes: wide
 list_skills: "recommendation engine, similarity measurement, graph-based clustering, UI design & build"
 list_technical: "Spark, MLLib, AWS Sagemaker, python (pyspark, plotly, dash, scikit-learn, pandas, numpy, seaborn)"
-gallery:
 ---
 
 # What I Did
