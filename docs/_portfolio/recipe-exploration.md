@@ -4,7 +4,7 @@ excerpt: "Recipe recommendation for those looking to get 'outside their comfort 
 header:
   teaser: "/images/fooddotcom/teaser.png"
 layout: single
-classes: wide
+# classes: wide
 list_skills: "recommendation engine, similarity measurement, graph-based clustering, UI design & build"
 list_technical: "Spark, MLLib, AWS Sagemaker, python (pyspark, plotly, dash, scikit-learn, pandas, numpy, seaborn)"
 ---

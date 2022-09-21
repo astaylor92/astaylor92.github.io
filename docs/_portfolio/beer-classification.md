@@ -4,7 +4,7 @@ excerpt: "An exploration of multiclass classification algorithms to predict a be
 header:
   teaser: "/images/beercharacteristics/teaser.png"
 layout: single
-classes: wide
+# classes: wide
 list_skills: "end-to-end ML pipeline, data cleansing, output visualization, classification model, scoring deep-dive"
 list_technical: "scikit-learn, pandas, numpy, seaborn"
 ---
