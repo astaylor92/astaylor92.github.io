@@ -6,8 +6,6 @@ classes: wide
 skills:
 ---
 
-# TODO - Fill in all 'XX's
----
 # What I Did
 
 ## Context
@@ -46,7 +44,7 @@ Ultimately, the model strengths were all fairly weak, from a performance standpo
 **Performance**
 
 <p align="center">
-    <img src="/images/songpopularity/model_scores.png"  width="80%" height="80%">
+    <img src="/images/songpopularity/model_performance.png"  width="80%" height="80%">
     <br>
     <span class="figure-caption"> Model Scores, Test Data </span>
 </p>
@@ -94,7 +92,7 @@ To analyze features, we looked at our LASSO model output.
 
 # Notebooks
 
-XX - ADD NOTEBOOK LINKS
+[Github Repo](https://github.com/astaylor92/songpopularity)
 
 ---
 
@@ -142,7 +140,7 @@ The number of tables, I soon learned, grew from a single 'tracks' table with tra
 ### Step 3 - Join and filter
 
 <p align="center">
-    <img src="/images/songpopularity/final_join.png"  width="80%" height="80%">
+    <img src="/images/songpopularity/final_join.png"  width="70%" height="70%">
     <br>
     <span class="figure-caption"> Step 3 - Final Join </span>
 </p>
@@ -171,7 +169,7 @@ Using the Spotify API was the real limiter. Many of the APIs had to be done in b
 This was an even trickier call. Initially, I had understood that the last.fm database had musicbrainz IDs for each song. However, I came to find out that their capability for that was discontinued, and they only match MBIDs for albums. This required me to first pull each album, then query for their songs based on the album and track name, which resulted in some loss.
 
 <p align="center">
-    <img src="/images/songpopularity/lastfm_api.png"  width="80%" height="80%">
+    <img src="/images/songpopularity/lastfm_api.png"  width="65%" height="65%">
     <br>
     <span class="figure-caption"> last.fm API Calls </span>
 </p>
@@ -184,7 +182,7 @@ This was an even trickier call. Initially, I had understood that the last.fm dat
 Finally, I got to marry it all together! First, I joined the query results together using release ID. Then, I used `fuzzywuzzy` to match the track names. At long last, I had a full dataset. 
 
 <p align="center">
-    <img src="/images/songpopularity/api_join.png"  width="80%" height="80%">
+    <img src="/images/songpopularity/api_join.png"  width="75%" height="75%">
     <br>
     <span class="figure-caption"> Final Join - All Data </span>
 </p>
