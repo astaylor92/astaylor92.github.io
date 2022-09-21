@@ -25,14 +25,18 @@ Join together Spotify and last.fm datasets and analyze the importance of audio f
 ## Approach
 The overall approach for this was fairly straightforward, but the devil was in the details of the data collection and transformation. I'll provide an overview of approach I took here, and I'll dive into some of the challenges in the 'What I Took Away' section.
 
-XX - Approach chevron boxes
+<p align="center">
+    <img src="/images/songpopularity/steps.png"  width="80%" height="80%">
+    <br>
+    <span class="figure-caption"> Project Steps </span>
+</p>
 
 **Goals of Each Step**
 1. *Data Collection & Merging* - Develop 'database' of tracks from musicbrainz filtered to a sample year (2019), call Spotify and last.fm APIs to collect dependent variable and features, merge datasets using fuzzy logic as needed
 2. *EDA & Data Preparation* - Evaluate data cleanliness, conduct univariate and multivariate analyses, analyze multicollinearity, encode categorical variables, and split data in test-train sets
 3. *Model Selection* - Score and evaluate model families with hyperparameter tuning, select a go-forward model family for predictive power, select a go-forward model for feature comparison
 4. *Model Evaluation - Predictive Power* - Evaluate best model family for predictive power, understand how well popularity can be predicted from audio and artist features
-5. *Model Evaluation - Feature Analysis* - Evaluate best model family for feature importance, understand which features have the most significant relationships with song popularity.
+5. *Model Evaluation - Feature Importance* - Evaluate best model family for feature importance, understand which features have the most significant relationships with song popularity.
 
 **Note** - a detailed PDF report on this is included at the bottom, in the 'Detail' section.
 
@@ -54,7 +58,7 @@ When we look at the most preditive model family, Gradient Boosted Regression, we
 To analyze features, we looked at our LASSO model output.
 
 <p align="center">
-    <img src="/images/songpopularity/feature_scores.png"  width="80%" height="80%">
+    <img src="/images/songpopularity/feature_scores.png"  width="50%" height="50%">
     <br>
     <span class="figure-caption"> Feature Scores, LASSO model </span>
 </p>
@@ -122,6 +126,8 @@ The number of tables, I soon learned, grew from a single 'tracks' table with tra
 2. Join with release country information on release ID to add in year of release
 3. Join to medium information (think CD vs tape vs digital) on release ID to get medium ID
 
+**Note on Loss** - The only place during the database creation with loss was the join to release country information, which resulted in about 2% record loss.
+
 ### Step 2 - Develop track-level dataset, starting with 'track' table
 
 <p align="center">
@@ -144,11 +150,13 @@ The number of tables, I soon learned, grew from a single 'tracks' table with tra
 1. Join album & track-level datasets together
 2. Filter for 2019 songs, and take 10% sample
 
-For the most part, all joins were clean. About 2% of records dropped when joining release country information, but otherwise no records dropped until the final filter, which resulted in about 900k records.
+### Output of Database Creation
 
-## Spotify - Queries
+The result of these joins was 900kn records, representing a random sample of songs released in 2019.
 
-Using the Spotify API was the real limiter. Many of the APIs, as we'll see, had to be done in batches of 50-100 or individual album/track. There was also an invisible rate limit, so code had to be written to read the response headers RETRY statement and make sure pauses were introduced to avoid total timeouts. The diagram below shows the calls and their responses. 
+## Spotify - API Calls
+
+Using the Spotify API was the real limiter. Many of the APIs had to be done in batches of 50-100 or individual album/track. There was also an invisible rate limit, so code had to be written to read the response headers RETRY statement and make sure pauses were introduced to avoid total timeouts. The diagram below shows the calls and their responses. 
 
 <p align="center">
     <img src="/images/songpopularity/spotify_api.png"  width="80%" height="80%">
@@ -158,7 +166,7 @@ Using the Spotify API was the real limiter. Many of the APIs, as we'll see, had 
 
 **Note on Loss** - Although 900k records were introduced, due to rate limits, only 50k songs were retrieved from the first API call (ISRC > TRACK URI). From there, due to Spotify's URI system, very minimal loss was experienced in the remaining calls.
 
-## last.fm - Queries
+## last.fm - API Calls
 
 This was an even trickier call. Initially, I had understood that the last.fm database had musicbrainz IDs for each song. However, I came to find out that their capability for that was discontinued, and they only match MBIDs for albums. This required me to first pull each album, then query for their songs based on the album and track name, which resulted in some loss.
 
