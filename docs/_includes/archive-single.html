@@ -27,6 +27,6 @@
     {% include page__meta.html type=include.type %}
     {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
     {% if post.list_skills %}<p class="archive__item-skills" itemprop="description">{{ post.list_skills | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
-    {% if post.list_technical %}<p class="archive__item-technical" itemprop="description">{{ post.list_skills | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
+    {% if post.list_technical %}<p class="archive__item-technical" itemprop="description">{{ post.list_technical | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
   </article>
 </div>

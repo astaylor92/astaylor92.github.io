@@ -264,13 +264,9 @@
 
   .archive__item-teaser {
     @include breakpoint($small) {
-      height: 215px;
-      width: 300px;
     }
 
     @include breakpoint($medium) {
-      height: 215px;
-      width: 300px;
     }
   }
 }
