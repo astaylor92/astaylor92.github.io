@@ -26,7 +26,11 @@ First, we wanted to understand if a customer's bank history could be used to pre
 ## Approach
 The overall approach for this was fairly straightforward, but the devil was in the model testing, experimentation, and definition of 'value' of the outputs. I won't be able to provide many graphics, but will give summaries of what was performed in each step below.
 
-XX - Chevrons
+<p align="center">
+    <img src="/images/kababge/chevrons.png">
+    <br>
+    <span class="figure-caption"> Project Steps </span>
+</p>
 
 | :---: | :--- |
 | <img src="/images/kabbage/extract.png"  width="70%" height="70%"> | <span class="table-steps">**Data Collection**<br>An in-house database querying and feature extraction layer was used to collect the feature set and DV. The feature set was ~2k features generated from transaction-level bank extracts.</p> |
