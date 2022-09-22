@@ -7,8 +7,8 @@ header:
   teaser: "/images/kabbage/mlflow_databricks.png"
 classes: wide
 author_profile: true
-list_skills: "feature engineering, hypothesis testing, production model experimentation, prediction sensitivity analysis"
-list_technical: "AWS S3, Databricks, JIRA, Confluence, python (pyspark, mlflow, scikit-learn, xgboost, pandas, numpy, plotnine)"
+list_skills: "feature engineering, hypothesis testing, model experimentation, prediction sensitivity analysis"
+list_technical: "AWS S3, Databricks, JIRA, Confluence, python (pyspark, mlflow, scikit-learn, xgboost, plotnine)"
 ---
 
 # What I Did
