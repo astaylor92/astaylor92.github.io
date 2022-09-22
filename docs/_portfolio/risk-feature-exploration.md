@@ -4,7 +4,7 @@ layout: single
 title: "Loan Risk Submodel Experimentation"
 excerpt: "Experimenting with feature engineering to improve loan risk submodels"
 header:
-  teaser: "/images/songpopularity/teaser.png"
+  teaser: "/images/kabbage/mlflow_databricks.png"
 classes: wide
 author_profile: true
 list_skills: "feature engineering, hypothesis testing, production model experimentation, prediction sensitivity analysis"
@@ -61,7 +61,7 @@ From a value as features standpoint, we found a few hypotheses to explore, but n
 
 ## Lessons Learned
 * **Enterprise standardization of metrics calculations and model reporting are wonderful** - The team at Amex predefined a number of commonly used metrics for different families of estimators, and created custom helper libraries to make reporting very fast. Our direct team also used `xlsxwriter` and a pretty slick set of helper functions to create a number of valuable performance summaries across multiple aggregations.
-* **Code reviews** - Our team instituted weekly rotating rubber ducky programming sessions that were extremely helpful, particularly for quick debugs as well as learning new coding techniques.
+* **Code reviews are great** - Our team instituted weekly rotating rubber ducky programming sessions that were extremely helpful, particularly for quick debugs as well as learning new coding techniques.
 * **Custom libraries for feature selection & extraction are a gift and a curse** - The team had standardized libraries for generating aggregate features from transactional data and downselecting them. This was great from a repeatibility standpoint, but it also was initially built for models with a different purpose then mine. This meant that some of the performance challenges we faced were buried in a 'black box' of prebuilt analysis.
 * **Weight of evidence and information value are cool metrics for boosting** - I hadn't used weight of evidence to evaluate features before this job, but it was a great way to measure a feature's relationship to the DV. It helped for continuous and categorical features, which we bucketed and calculated WoE.
 
