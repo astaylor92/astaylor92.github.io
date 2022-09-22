@@ -238,7 +238,7 @@
   }
 
   .archive__item-excerpt {
-    display: none;
+    // display: none;
 
     @include breakpoint($medium) {
       display: block;
@@ -247,7 +247,7 @@
   }
 
   .archive__item-skills {
-    display: none;
+    // display: none;
 
     @include breakpoint($medium) {
       display: block;
@@ -258,7 +258,7 @@
   }
 
   .archive__item-technical {
-    display: none;
+    // display: none;
 
     @include breakpoint($medium) {
       display: block;
