@@ -43,24 +43,25 @@ The overall approach for this was fairly straightforward, but the devil was in t
 
 ## Outcome
 
+Overall, the project was a success, although the results on both fronts weren't extremely promising. From a performance standpoint, with only bank history to work on, prediction of the change in account transactions was OK. The features didn't provide much insight - the most influential feature was the total transactions from the period leading up. 
+
+From a value as features standpoint, we found a few hypotheses to explore, but nothing that looked like it would bring enough signal to the models to chase down further. This was OK, and made some sense - the features used in this model were many of the same features evaluated for the other submodels. It seemed that would take a model with other significant features or more encoding (e.g. deep learning) to provide different enough signal to enrich the other models.
+
 # What I Took Away
 
 ## Technology & Techniques
-* Jira
-* Confluence
-* AWS S3
-* Databricks
-* mlflow
-* Pyspark
-* xgboost
-* pandas and numpy
-* xlswriter
+* *Jira* for agile team management, including creation of epics, stories, and issues for my project
+* *Confluence* for documentation and sharing results
+* *AWS S3* for file storage
+* *Databricks* for all mdeling and analysis
+* *mlflow* for experiment management and model selection
+* *Pyspark* for data extract and processing
+* *xgboost* for boosted regressor development
+* *xlswriter* for report writing
 
 ## Lessons Learned
-* Code review
-* Presentation of materials
-* Standardization of metrics calculations
-* Standardization of reporting
-* Custom libraries for feature selection & extraction
-* WoE
+* **Enterprise standardization of metrics calculations and model reporting are wonderful** - The team at Amex predefined a number of commonly used metrics for different families of estimators, and created custom helper libraries to make reporting very fast. Our direct team also used `xlsxwriter` and a pretty slick set of helper functions to create a number of valuable performance summaries across multiple aggregations.
+* **Code reviews** - Our team instituted weekly rotating rubber ducky programming sessions that were extremely helpful, particularly for quick debugs as well as learning new coding techniques.
+* **Custom libraries for feature selection & extraction are a gift and a curse** - The team had standardized libraries for generating aggregate features from transactional data and downselecting them. This was great from a repeatibility standpoint, but it also was initially built for models with a different purpose then mine. This meant that some of the performance challenges we faced were buried in a 'black box' of prebuilt analysis.
+* **Weight of evidence and information value are cool metrics for boosting** - I hadn't used weight of evidence to evaluate features before this job, but it was a great way to measure a feature's relationship to the DV. It helped for continuous and categorical features, which we bucketed and calculated WoE.
 
