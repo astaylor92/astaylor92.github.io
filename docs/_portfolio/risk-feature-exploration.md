@@ -1,7 +1,7 @@
 ---
 layout: single
 # hidden: true
-title: ""
+title: "Loan Risk Submodel Experimentation"
 excerpt: "Experimenting with feature engineering to improve loan risk submodels"
 header:
   teaser: "/images/songpopularity/teaser.png"
@@ -13,7 +13,7 @@ list_technical: "AWS S3, Databricks, JIRA, Confluence, python (pyspark, mlflow, 
 
 # What I Did
 
-XX - note about data and images
+**Note** - *Because I can't discuss exact details, visualizations and detailed walkthroughs will be limited for this post.*
 
 ## Context
 This was a project that I did as an intern at Kabbage, a part of American Express, over the summer of 2022. I worked on a risk modeling team for Kabbage's Funding product, which provides automated small business loans, enabled by automatic underwriting based on risk modeling that my larger team peformed.
@@ -29,12 +29,12 @@ The overall approach for this was fairly straightforward, but the devil was in t
 XX - Chevrons
 
 | :---: | :--- |
-| XX - layer diagram | **Data Collection** - An in-house database querying and feature extraction layer was used to collect the feature set and DV. The feature set was ~2k features generated from transaction-level bank extracts. |
-| XX - Merge figure | **Data Transformation & Merge** - Data from multiple queries (features from the time leading up to application and time after) was merged, and gaps were noted. DV outliers were removed from the dataset. Model population was carefully noted and summarized.|
-| XX - Funnel and mock waterfall | **Feature Downselection & Clustering** - Aggregate metrics such as null count, mean, median, standard deviation, correlation with the DV, weight-of-evidence, and others were generated. Features were removed based on metric thresholds, and remaining features were clustered based on their correlation with DV and collinearity. |
-| XX - mlflow image | **Experimentation** - An intial xgboost gridsearch was run to determine parameters to use during experimentation. After initial model run, experiments were performed to improve performance and tail behavior. Experiments included log transformation of the DV, standardization of the DV, and further outlier removal. |
-| XX - ICE Plot | **Output Analysis - Predictive Performance** - Performance metrics were evaluated and fed to a standard Excel file. Model accuracy by DV value, actual value, and other features are summarized. Sensitivity of key metrics was evaluated using ICE plots and summaries. A standard set of performance metrics was used for comparison. |
-| XX - Correlation plot | **Output Analysis - Value as a Feature** - Predicted DVs' correlation and gini index was evaluated against risk model predictions, actuals, and residuals to understand the value of the outputs. |
+| ![Extraction](/images/kabbage/extract.png)] | **Data Collection** - An in-house database querying and feature extraction layer was used to collect the feature set and DV. The feature set was ~2k features generated from transaction-level bank extracts. |
+| ![Merge](/images/kabbage/merge.png)] | **Data Transformation & Merge** - Data from multiple queries (features from the time leading up to application and time after) was merged, and gaps were noted. DV outliers were removed from the dataset. Model population was carefully noted and summarized.|
+| ![Clustering](/images/kabbage/cluster.png)] | **Feature Downselection & Clustering** - Aggregate metrics such as null count, mean, median, standard deviation, correlation with the DV, weight-of-evidence, and others were generated. Features were removed based on metric thresholds, and remaining features were clustered based on their correlation with DV and collinearity. |
+| ![Mlflow](/images/kabbage/mlflow_databricks.png) | **Experimentation** - An intial xgboost gridsearch was run to determine parameters to use during experimentation. After initial model run, experiments were performed to improve performance and tail behavior. Experiments included log transformation of the DV, standardization of the DV, and further outlier removal. |
+| ![ICE](/images/kabbage/iceplot.png) | **Output Analysis - Predictive Performance** - Performance metrics were evaluated and fed to a standard Excel file. Model accuracy by DV value, actual value, and other features are summarized. Sensitivity of key metrics was evaluated using ICE plots and summaries. A standard set of performance metrics was used for comparison. |
+| ![Correlation](/images/kabbage/corrplot.png) | **Output Analysis - Value as a Feature** - Predicted DVs' correlation and gini index was evaluated against risk model predictions, actuals, and residuals to understand the value of the outputs. |
 
 
 ## Outcome
