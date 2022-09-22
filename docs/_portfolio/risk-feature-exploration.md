@@ -27,7 +27,7 @@ First, we wanted to understand if a customer's bank history could be used to pre
 The overall approach for this was fairly straightforward, but the devil was in the model testing, experimentation, and definition of 'value' of the outputs. I won't be able to provide many graphics, but will give summaries of what was performed in each step below.
 
 <p align="center">
-    <img src="/images/kababge/chevrons.png">
+    <img src="/images/kabbage/chevrons.png">
     <br>
     <span class="figure-caption"> Project Steps </span>
 </p>
