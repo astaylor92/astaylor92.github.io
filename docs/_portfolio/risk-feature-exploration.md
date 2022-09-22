@@ -1,6 +1,6 @@
 ---
 layout: single
-hidden: true
+# hidden: true
 title: ""
 excerpt: "Experimenting with feature engineering to improve loan risk submodels"
 header:
