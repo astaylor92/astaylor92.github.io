@@ -94,7 +94,7 @@ This was an opportunity for me to explore a number of things on the technical si
 
 ---
 
-# Notebooks
+# Code
 
 More detail on the project can be found in the form of annotated notebooks on my Github site.
 

@@ -94,7 +94,7 @@ To analyze features, we looked at our LASSO model output.
 
 ---
 
-# Notebooks
+# Code
 
 [Github Repo](https://github.com/astaylor92/songpopularity)
 

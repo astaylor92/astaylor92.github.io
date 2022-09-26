@@ -90,7 +90,7 @@ This was an exciting one to work on because I got to actively develop user inter
 
 ---
 
-# Notebooks and Demo
+# Code and Demo
 
 More detail on the project can be found in the form of annotated notebooks on my Github site.
 
