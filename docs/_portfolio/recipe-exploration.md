@@ -1,6 +1,6 @@
 ---
 title: "Recipe Exploration Tool"
-excerpt: "Recipe recommendation for those looking to get 'outside their comfort zone' - exploration of similary measurements, scoring heuristics, and front-end design"
+excerpt: "Dash-based recipe recommendation tool for those looking to get 'outside their comfort zone' while cooking, with an emphasis on similary measurements, graph analysis, and UI design"
 header:
   teaser: "/images/fooddotcom/teaser.png"
 layout: single
