@@ -1,6 +1,6 @@
 ---
 title: "Recipe Exploration Tool"
-excerpt: "Dash-based recipe recommendation tool for those looking to get 'outside their comfort zone' while cooking, with an emphasis on similary measurements, graph analysis, and UI design"
+excerpt: "Dash-based recipe recommendation engine for new & different recipes, with an emphasis on similary measurements, graph analysis, and UI design"
 header:
   teaser: "/images/fooddotcom/teaser.png"
 layout: single
