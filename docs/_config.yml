@@ -25,7 +25,7 @@ url                      : # the base hostname & protocol for your site e.g. "ht
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : "/images/headshot.jpeg"
-logo                     : "images/logo.png"
+logo                     : # "images/logo.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
@@ -111,7 +111,7 @@ analytics:
 author:
   name             : "Andrew Taylor"
   avatar           : "/images/headshot.jpeg"
-  bio              : "Industrial engineer and reformed strategy consultant turned data scientist. Open to work starting January 2023, following getting my MS Analytics from Georgia Tech."
+  bio              : "Industrial engineer and reformed strategy consultant turned data scientist. Open to work starting January 2023, following completing coursework for my MS Analytics from Georgia Tech."
   location         : "Austin, TX"
   email            : "astaylor.92@gmail.com"
   links:
