@@ -19,6 +19,6 @@ In the future, I hope to bring my experience and enthusiasm to a team of data sc
 
 If you're interested a quick overview of my history and skills, please take a look at my resume below. For more detail on some of my work experiences and modeling projects, check out the blog posts found on the home page.
 
-![Resume](/images/AndrewTaylor_Resume_202209.png)
+![Resume](/images/AndrewTaylor_Resume.png)
 
-[Link to PDF Download](/images/AndrewTaylor_Resume_202209.pdf)
+[Link to PDF Download](/images/AndrewTaylor_Resume.pdf)
