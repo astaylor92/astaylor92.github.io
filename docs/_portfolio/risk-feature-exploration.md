@@ -2,7 +2,7 @@
 layout: single
 # hidden: true
 title: "Loan Risk Submodel Experimentation"
-excerpt: "Experimenting with feature engineering to improve loan risk submodels, with an emphasis on real-world ML Ops, model experimentation, and production-scale data"
+excerpt: "New feature generation to improve loan risk submodels, with an emphasis on real-world ML Ops, model experimentation, and production-scale data"
 header:
   teaser: "/images/kabbage/mlflow_databricks.png"
 classes: wide
