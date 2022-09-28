@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Song Popularity Prediction"
-excerpt: "Marrying up last.fm, Spotify, and Musicbrainz data and understand if/how sonic features make a song popular with an emphasis on ETL and API scraping"
+excerpt: "Marrying up last.fm, Spotify, and Musicbrainz data and understand if/how sonic features make a song popular, with an emphasis on ETL and API scraping"
 header:
   teaser: "/images/songpopularity/teaser.png"
 classes: wide

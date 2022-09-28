@@ -1,6 +1,6 @@
 ---
 title: "Beer Classification"
-excerpt: "An exploration of multiclass classification algorithms to predict a beer's style by its characteristics with an emphasis on the end-to-end modeling process"
+excerpt: "An exploration of multiclass classification algorithms to predict a beer's style by its characteristics, with an emphasis on the end-to-end modeling process"
 header:
   teaser: "/images/beercharacteristics/teaser.png"
 layout: single
